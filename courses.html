@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html>
-<head><title>Courses</title>
-    <style>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>Courses</title>
+
+<style>
 :root{
     --primary:#FFE0C4;
     --primary-dark:#f5cba7;
     --text:#2b2b2b;
-    --shadow:0 10px 30px rgba(0,0,0,0.08);
 }
+
 body{
     margin:0;
     font-family:"Segoe UI", sans-serif;
     background:#fff;
     color:var(--text);
 }
+
+/* ===== Navbar ===== */
 nav{
     position:sticky;
     top:0;
@@ -22,7 +27,6 @@ nav{
     justify-content:center;
     gap:18px;
     padding:14px;
-    box-shadow:var(--shadow);
 }
 nav a{
     text-decoration:none;
@@ -35,42 +39,66 @@ nav a:hover{
     background:var(--primary-dark);
     transform:translateY(-2px);
 }
+
+/* ===== Section ===== */
 .section{
     padding:60px 20px;
-    max-width:1000px;
+    max-width:1100px;
     margin:auto;
 }
+
+/* ===== Title ===== */
+.title{
+    font-size:28px;
+    margin-bottom:30px;
+}
+
+/* ===== Category ===== */
+.category{
+    margin-bottom:40px;
+}
+
+.category-title{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:15px;
+    border-left:5px solid var(--primary);
+    padding-left:10px;
+}
+
+/* ===== Grid ===== */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:15px;
+}
+
+/* ===== Card ===== */
 .card{
     background:#fff;
-    padding:20px;
+    padding:15px;
     border-radius:12px;
-    box-shadow:var(--shadow);
-    margin:10px 0;
     transition:.3s;
+    border:1px solid #f2f2f2;
 }
+
 .card:hover{
     transform:translateY(-6px);
+    background:#fff8f2;
 }
-.hero{
-    height:80vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(120deg,var(--primary),#fff);
-    text-align:center;
+
+/* ===== Grade ===== */
+.grade{
+    color:#d35400;
+    font-weight:bold;
+    margin-left:5px;
 }
-.btn{
-    padding:12px 20px;
-    background:var(--primary);
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-}
-.btn:hover{background:var(--primary-dark);}
+
 </style>
 </head>
+
 <body>
+
 <nav>
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
@@ -81,11 +109,53 @@ nav a:hover{
 <a href="internship.html">Internship</a>
 <a href="others.html">Others</a>
 </nav>
+
 <div class="section">
-<div class="card">System Design A+</div>
-<div class="card">Cyber Security A+</div>
-<div class="card">Machine Learning A+</div>
-<div class="card">Cloud Computing A+</div>
+
+<div class="title">📚 Related Courses</div>
+
+<!-- 1 系統架構 -->
+<div class="category">
+<div class="category-title">💻 系統架構與核心基礎</div>
+<div class="grid">
+<div class="card">系統分析與設計 <span class="grade">A+</span></div>
+<div class="card">計算機概論 <span class="grade">A+</span></div>
+<div class="card">Unix 系統與應用 <span class="grade">A+</span></div>
+<div class="card">資料結構 <span class="grade">A</span></div>
 </div>
+</div>
+
+<!-- 2 網路與資安 -->
+<div class="category">
+<div class="category-title">🔐 基礎設施、網路與資安</div>
+<div class="grid">
+<div class="card">網路協定分析實務 <span class="grade">A+</span></div>
+<div class="card">雲端計算理論與實務 <span class="grade">A+</span></div>
+<div class="card">資訊安全 <span class="grade">A+</span></div>
+</div>
+</div>
+
+<!-- 3 商業管理 -->
+<div class="category">
+<div class="category-title">📊 商業邏輯與管理</div>
+<div class="grid">
+<div class="card">管理資訊系統 <span class="grade">A+</span></div>
+<div class="card">資料庫 <span class="grade">A</span></div>
+</div>
+</div>
+
+<!-- 4 AI & Data -->
+<div class="category">
+<div class="category-title">🤖 大數據與人工智慧</div>
+<div class="grid">
+<div class="card">資料探勘研究與實務 <span class="grade">A+</span></div>
+<div class="card">巨量資料科學導論 <span class="grade">A+</span></div>
+<div class="card">演算式決策與學習 <span class="grade">A+</span></div>
+<div class="card">數位內容與機器學習 <span class="grade">A+</span></div>
+</div>
+</div>
+
+</div>
+
 </body>
 </html>
