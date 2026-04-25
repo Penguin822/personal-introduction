@@ -1,9 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <title>Home</title>
 </head>
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+
+<style>
+:root{
+    --primary:#FFE0C4;
+    --primary-dark:#f5cba7;
+    --text:#2b2b2b;
+    --shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+body{
+    margin:0;
+    font-family:"Segoe UI", sans-serif;
+    background:#fff;
+    color:var(--text);
+}
+nav{
+    position:sticky;
+    top:0;
+    background:var(--primary);
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    padding:14px;
+    box-shadow:var(--shadow);
+}
+nav a{
+    text-decoration:none;
+    color:#333;
+    padding:8px 12px;
+    border-radius:8px;
+    transition:.3s;
+}
+nav a:hover{
+    background:var(--primary-dark);
+    transform:translateY(-2px);
+}
+.hero{
+    height:80vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(120deg,var(--primary),#fff);
+    text-align:center;
+}
+.btn{
+    padding:12px 20px;
+    background:var(--primary);
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+.btn:hover{background:var(--primary-dark);}
+</style>
+
+</head>
+
 <body>
 
 <nav>
@@ -20,7 +82,7 @@
 <div class="hero">
 <h1>張綵芸</h1>
 <p>AI / Medical Image / Deep Learning</p>
-<button onclick="location.href='about.html'">Enter Portfolio</button>
+<button class="btn" onclick="location.href='about.html'">Enter Portfolio</button>
 </div>
 
 </body>
