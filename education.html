@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html>
-<head><title>Education</title>
-    <style>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>Education</title>
+
+<style>
 :root{
     --primary:#FFE0C4;
     --primary-dark:#f5cba7;
     --text:#2b2b2b;
-    --shadow:0 10px 30px rgba(0,0,0,0.08);
 }
+
 body{
     margin:0;
     font-family:"Segoe UI", sans-serif;
     background:#fff;
     color:var(--text);
 }
+
+/* ===== Navbar ===== */
 nav{
     position:sticky;
     top:0;
@@ -22,7 +27,6 @@ nav{
     justify-content:center;
     gap:18px;
     padding:14px;
-    box-shadow:var(--shadow);
 }
 nav a{
     text-decoration:none;
@@ -35,42 +39,74 @@ nav a:hover{
     background:var(--primary-dark);
     transform:translateY(-2px);
 }
+
+/* ===== Section ===== */
 .section{
     padding:60px 20px;
     max-width:1000px;
     margin:auto;
 }
+
+/* ===== 標題 ===== */
+.title{
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+/* ===== 卡片 ===== */
 .card{
     background:#fff;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:var(--shadow);
-    margin:10px 0;
+    padding:25px;
+    border-radius:14px;
+    margin:20px 0;
+    border-left:6px solid var(--primary);
     transition:.3s;
 }
+
 .card:hover{
     transform:translateY(-6px);
+    background:#fff8f2;
 }
-.hero{
-    height:80vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(120deg,var(--primary),#fff);
-    text-align:center;
+
+/* ===== 學校標題 ===== */
+.school{
+    font-size:20px;
+    font-weight:bold;
 }
-.btn{
-    padding:12px 20px;
-    background:var(--primary);
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
+
+.meta{
+    color:#666;
+    margin-bottom:10px;
 }
-.btn:hover{background:var(--primary-dark);}
+
+/* ===== 小標 ===== */
+.subtitle{
+    margin-top:15px;
+    font-weight:bold;
+}
+
+/* ===== list ===== */
+ul{
+    padding-left:20px;
+    margin:5px 0;
+}
+
+li{
+    margin:4px 0;
+}
+
+/* ===== GPA highlight ===== */
+.gpa{
+    margin-top:10px;
+    font-weight:bold;
+    color:#d35400;
+}
+
 </style>
 </head>
+
 <body>
+
 <nav>
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
@@ -81,10 +117,57 @@ nav a:hover{
 <a href="internship.html">Internship</a>
 <a href="others.html">Others</a>
 </nav>
+
 <div class="section">
-<div class="card">President Scholarship 113/114</div>
-<div class="card">Top 1 College Award</div>
-<div class="card">External Scholarship</div>
+
+<div class="title">🎓 Education</div>
+
+<!-- 碩士 -->
+<div class="card">
+<div class="school">國立陽明交通大學 資訊管理研究所</div>
+<div class="meta">2024/09 - Now ｜ 商務多媒體實驗室（指導教授：蔡銘箴）</div>
+
+<div class="subtitle">學術成就</div>
+<ul>
+<li>113、114學年度 張俊彥校長紀念獎學金</li>
+</ul>
+
+<div class="subtitle">研究領域</div>
+<ul>
+<li>醫療影像對抗性分析（AI 安全 × 醫療應用）</li>
+</ul>
+
+<div class="subtitle">參與計畫</div>
+<ul>
+<li>國科會 AI 正念飲食 App 計畫（成大電機 × 交大資管 × 營養師）</li>
+</ul>
+
+<div class="gpa">GPA: 4.28 / 4.3</div>
 </div>
+
+<!-- 學士 -->
+<div class="card">
+<div class="school">國立彰化師範大學 資訊管理學系</div>
+<div class="meta">2020/09 - 2024/01</div>
+
+<div class="subtitle">學術成就</div>
+<ul>
+<li>管理學院優秀學生獎（第一名）</li>
+<li>連德李連來校外獎學金</li>
+</ul>
+
+<div class="subtitle">專題</div>
+<ul>
+<li>具備情境感知能力之生成式 AI 在地遊程系統</li>
+<li>擔任專題組長</li>
+<li>榮獲 CULTECH「Acer 企業獎」</li>
+<li>獲選「國泰卓越獎助計畫」</li>
+</ul>
+
+<div class="gpa">GPA: 3.9 / 4.0</div>
+</div>
+
+</div>
+
 </body>
 </html>
