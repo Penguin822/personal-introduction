@@ -39,7 +39,7 @@ nav a:hover{
     transform:translateY(-2px);
 }
 .hero{
-    height:80vh;
+    height:90vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -47,6 +47,31 @@ nav a:hover{
     background:linear-gradient(120deg,var(--primary),#fff);
     text-align:center;
 }
+
+/* 👇 頭像樣式 */
+.profile-pic{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid white;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    margin-bottom:20px;
+    transition:.3s;
+}
+.profile-pic:hover{
+    transform:scale(1.05);
+}
+
+/* 👇 外圈柔和框 */
+.profile-wrapper{
+    padding:8px;
+    border-radius:50%;
+    background:linear-gradient(120deg,#fff,var(--primary));
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom:20px;
+}
+
 .btn{
     padding:12px 20px;
     background:var(--primary);
@@ -73,9 +98,19 @@ nav a:hover{
 </nav>
 
 <div class="hero">
+
+<!-- 👇 個人照片 -->
+<div class="profile-wrapper">
+    <img src="images/profile.png" class="profile-pic">
+</div>
+
 <h1>張綵芸</h1>
 <p>AI / Medical Image / Deep Learning</p>
-<button class="btn" onclick="location.href='about.html'">Enter Portfolio</button>
+
+<button class="btn" onclick="location.href='about.html'">
+    Enter Portfolio
+</button>
+
 </div>
 
 </body>
