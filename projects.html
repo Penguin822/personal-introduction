@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html>
-<head><title>Projects</title>
-    <style>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>Projects</title>
+
+<style>
 :root{
     --primary:#FFE0C4;
     --primary-dark:#f5cba7;
     --text:#2b2b2b;
-    --shadow:0 10px 30px rgba(0,0,0,0.08);
 }
+
 body{
     margin:0;
     font-family:"Segoe UI", sans-serif;
     background:#fff;
     color:var(--text);
 }
+
+/* ===== Navbar ===== */
 nav{
     position:sticky;
     top:0;
@@ -22,7 +27,6 @@ nav{
     justify-content:center;
     gap:18px;
     padding:14px;
-    box-shadow:var(--shadow);
 }
 nav a{
     text-decoration:none;
@@ -35,42 +39,81 @@ nav a:hover{
     background:var(--primary-dark);
     transform:translateY(-2px);
 }
+
+/* ===== Section ===== */
 .section{
     padding:60px 20px;
-    max-width:1000px;
+    max-width:1100px;
     margin:auto;
 }
+
+.title{
+    font-size:28px;
+    margin-bottom:30px;
+}
+
+/* ===== Card ===== */
 .card{
     background:#fff;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:var(--shadow);
-    margin:10px 0;
+    padding:25px;
+    border-radius:14px;
+    margin-bottom:25px;
+    border-left:6px solid var(--primary);
     transition:.3s;
 }
+
 .card:hover{
     transform:translateY(-6px);
+    background:#fff8f2;
 }
-.hero{
-    height:80vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(120deg,var(--primary),#fff);
-    text-align:center;
+
+/* ===== Title ===== */
+.project-title{
+    font-size:20px;
+    font-weight:bold;
 }
-.btn{
-    padding:12px 20px;
-    background:var(--primary);
-    border:none;
+
+.meta{
+    color:#666;
+    margin-bottom:10px;
+}
+
+/* ===== Tags ===== */
+.tags{
+    margin:10px 0;
+}
+.tag{
+    display:inline-block;
+    background:#fce5cd;
+    padding:4px 8px;
+    margin:3px;
+    border-radius:6px;
+    font-size:12px;
+}
+
+/* ===== Image placeholder ===== */
+.img-box{
+    margin-top:15px;
+    height:180px;
+    background:#f5f5f5;
     border-radius:10px;
-    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#aaa;
+    font-size:14px;
 }
-.btn:hover{background:var(--primary-dark);}
+
+/* ===== List ===== */
+ul{
+    padding-left:20px;
+}
+
 </style>
 </head>
+
 <body>
+
 <nav>
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
@@ -81,24 +124,109 @@ nav a:hover{
 <a href="internship.html">Internship</a>
 <a href="others.html">Others</a>
 </nav>
+
 <div class="section">
 
+<div class="title">🚀 Projects</div>
+
+<!-- 🔥 Research Project -->
 <div class="card">
-<h3>Medical Image Adversarial Attack</h3>
-<p>ResNet50 + One Pixel Attack + DE Attack</p>
-<p>Focus: AI robustness in medical imaging</p>
+<div class="project-title">Medical Image Adversarial Attack</div>
+<div class="meta">ResNet50 + One Pixel Attack + Differential Evolution</div>
+
+<div class="tags">
+<span class="tag">Deep Learning</span>
+<span class="tag">Adversarial Attack</span>
+<span class="tag">Medical Imaging</span>
+<span class="tag">AI Security</span>
 </div>
 
-<div class="card">
-<h3>Movie Ticket System</h3>
-<p>Full-stack web system with database</p>
+<ul>
+<li>針對醫療影像模型進行對抗攻擊分析</li>
+<li>使用 One Pixel Attack 與 DE 改變分類結果</li>
+<li>探討 AI 在醫療應用中的安全性與穩健性</li>
+</ul>
+
+<div class="img-box">
+👉 這裡可放「攻擊前 / 攻擊後」圖片
+</div>
 </div>
 
+<!-- ===== Course Project 1 ===== -->
 <div class="card">
-<h3>Kaggle Depression Prediction</h3>
-<p>ML classification model</p>
+<div class="project-title">Enterprise Inventory Management System</div>
+<div class="meta">系統分析與設計</div>
+
+<div class="tags">
+<span class="tag">SDLC</span>
+<span class="tag">MySQL</span>
+<span class="tag">ERD</span>
+<span class="tag">DFD</span>
+<span class="tag">Lazarus</span>
+</div>
+
+<ul>
+<li>完整主導 SDLC，建立會員 / 銷貨 / 庫存 / 財務系統</li>
+<li>繪製 DFD 與 ERD，定義 40+ 業務流程</li>
+<li>實作 20+ 功能模組，完成進銷存自動化</li>
+</ul>
+</div>
+
+<!-- ===== Course Project 2 ===== -->
+<div class="card">
+<div class="project-title">Web-based Movie Ticketing System</div>
+<div class="meta">資料庫課程專案</div>
+
+<div class="tags">
+<span class="tag">PHP</span>
+<span class="tag">HTML</span>
+<span class="tag">CSS</span>
+<span class="tag">MySQL</span>
+</div>
+
+<ul>
+<li>設計完整資料庫 schema</li>
+<li>實作電影訂票與劃位系統</li>
+</ul>
+</div>
+
+<!-- ===== Course Project 3 ===== -->
+<div class="card">
+<div class="project-title">Depression Prediction Model</div>
+<div class="meta">資料探勘 / Kaggle</div>
+
+<div class="tags">
+<span class="tag">Python</span>
+<span class="tag">Machine Learning</span>
+<span class="tag">Feature Engineering</span>
+</div>
+
+<ul>
+<li>使用 NB, KNN, SVM, Random Forest, XGBoost</li>
+<li>進行特徵選擇與模型比較</li>
+<li>建立最佳預測模型</li>
+</ul>
+</div>
+
+<!-- ===== Course Project 4 ===== -->
+<div class="card">
+<div class="project-title">AWS Cloud Monitoring System</div>
+<div class="meta">雲端計算</div>
+
+<div class="tags">
+<span class="tag">AWS EC2</span>
+<span class="tag">Lambda</span>
+<span class="tag">RDS</span>
+<span class="tag">SNS</span>
+</div>
+
+<ul>
+<li>建立雲端設備監控系統</li>
+<li>使用 Serverless 架構進行自動化監控</li>
+</ul>
 </div>
 
 </div>
+
 </body>
 </html>
