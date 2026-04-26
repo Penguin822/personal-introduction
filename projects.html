@@ -3,126 +3,107 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects Portfolio</title>
+<title>Projects</title>
+
 <style>
     :root {
-        --bg-dark: #0a0a0c;
-        --bg-card: #161618;
-        --bg-hover: #1f1f22;
-        --primary-glow: rgba(99, 102, 241, 0.15);
-        --accent: #818cf8;
-        --text-main: #f3f4f6;
-        --text-muted: #9ca3af;
-        --border-color: rgba(255, 255, 255, 0.08);
-        --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        --primary: #FFE0C4;
+        --primary-dark: #f5cba7;
+        --secondary: #FFD6E0; /* 柔和粉，點綴用 */
+        --bg-light: #fafafa;
+        --text-main: #2b2b2b;
+        --text-muted: #666666;
+        --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
     }
 
     body {
         margin: 0;
-        background-color: var(--bg-dark);
+        background-color: var(--bg-light);
         color: var(--text-main);
-        font-family: var(--font-stack);
-        line-height: 1.6;
+        font-family: "Segoe UI", sans-serif;
+        line-height: 1.7;
         -webkit-font-smoothing: antialiased;
     }
 
-    /* ===== Navbar (Glassmorphism) ===== */
+    /* ===== Navbar ===== */
     nav {
         position: sticky;
         top: 0;
-        background: rgba(10, 10, 12, 0.7);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--border-color);
+        background: var(--primary);
         display: flex;
         justify-content: center;
-        gap: 32px;
-        padding: 16px;
+        gap: 18px;
+        padding: 14px;
         z-index: 100;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     nav a {
         text-decoration: none;
-        color: var(--text-muted);
+        color: #333;
         font-weight: 500;
-        font-size: 15px;
-        transition: color 0.3s ease;
-        letter-spacing: 0.5px;
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: 0.3s;
     }
 
     nav a:hover, nav a.active {
-        color: var(--text-main);
+        background: var(--primary-dark);
     }
 
     /* ===== Main Container ===== */
     .section {
-        padding: 80px 24px;
-        max-width: 1000px;
+        padding: 60px 24px;
+        max-width: 900px;
         margin: auto;
     }
 
     .title {
-        font-size: 36px;
-        font-weight: 700;
-        margin-bottom: 40px;
-        letter-spacing: -0.5px;
-        background: linear-gradient(to right, #fff, #a5b4fc);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 30px;
+        color: var(--text-main);
     }
 
     /* ===== Project Card ===== */
     .card {
-        background: var(--bg-card);
-        border: 1px solid var(--border-color);
-        padding: 32px;
+        background: #fff;
+        padding: 28px;
         border-radius: 16px;
+        margin-bottom: 25px;
+        border-left: 6px solid var(--primary-dark);
+        box-shadow: var(--shadow-soft);
         cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 4px;
-        height: 100%;
-        background: var(--accent);
-        opacity: 0.8;
+        transition: 0.3s;
     }
 
     .card:hover {
-        transform: translateY(-4px);
-        background: var(--bg-hover);
-        border-color: rgba(255, 255, 255, 0.15);
-        box-shadow: 0 20px 40px var(--primary-glow);
+        transform: translateY(-5px);
+        background: #fff8f2;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
     }
 
     .project-title {
-        font-size: 24px;
-        font-weight: 600;
+        font-size: 22px;
+        font-weight: bold;
         margin-bottom: 8px;
     }
 
     .meta {
         color: var(--text-muted);
-        font-size: 14px;
+        font-size: 15px;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
     }
 
     .badge {
-        background: rgba(129, 140, 248, 0.1);
-        color: var(--accent);
-        padding: 4px 10px;
+        background: var(--secondary);
+        color: #a33856;
+        padding: 4px 12px;
         border-radius: 20px;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 0.5px;
+        font-size: 13px;
+        font-weight: bold;
     }
 
     /* ===== MODAL ===== */
@@ -132,9 +113,8 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(4px);
         display: none;
         justify-content: center;
         align-items: center;
@@ -149,118 +129,97 @@
     }
 
     .modal-content {
-        background: var(--bg-dark);
-        border: 1px solid var(--border-color);
+        background: #fff;
         width: 90%;
-        max-width: 900px;
+        max-width: 850px;
         max-height: 85vh;
         overflow-y: auto;
         border-radius: 20px;
-        padding: 48px;
+        padding: 40px;
         position: relative;
         transform: translateY(20px);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        transition: transform 0.4s ease;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
 
     .modal.show .modal-content {
         transform: translateY(0);
     }
 
-    /* Scrollbar for Modal */
     .modal-content::-webkit-scrollbar { width: 8px; }
     .modal-content::-webkit-scrollbar-track { background: transparent; }
-    .modal-content::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-    .modal-content::-webkit-scrollbar-thumb:hover { background: #555; }
+    .modal-content::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
+    .modal-content::-webkit-scrollbar-thumb:hover { background: #bbb; }
 
     .close {
         position: absolute;
-        top: 24px;
-        right: 32px;
-        color: var(--text-muted);
+        top: 20px;
+        right: 25px;
+        color: #999;
         font-size: 28px;
         cursor: pointer;
-        transition: color 0.2s ease;
-        line-height: 1;
+        transition: 0.2s;
     }
 
     .close:hover {
-        color: #fff;
+        color: #333;
     }
 
-    /* ===== Modal Typography & Layout ===== */
+    /* ===== Modal Content Typography ===== */
     .modal-content h2 {
-        font-size: 32px;
+        font-size: 28px;
         margin-top: 0;
         margin-bottom: 12px;
-        line-height: 1.2;
+        color: var(--text-main);
     }
 
     .subtitle {
-        margin-top: 40px;
-        margin-bottom: 16px;
-        font-weight: 600;
+        margin-top: 35px;
+        margin-bottom: 12px;
+        font-weight: bold;
         font-size: 20px;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        border-bottom: 1px solid var(--border-color);
-        padding-bottom: 8px;
+        color: var(--text-main);
+        border-left: 4px solid var(--primary-dark);
+        padding-left: 12px;
     }
 
     .modal-content p, .modal-content li {
         color: var(--text-muted);
         font-size: 16px;
-        line-height: 1.8;
     }
 
-    .modal-content ul {
-        padding-left: 20px;
-    }
-
-    .modal-content li {
-        margin-bottom: 8px;
-    }
-
-    .modal-content strong {
-        color: var(--accent);
-        font-weight: 600;
-    }
-
-    /* ===== Images Grid ===== */
-    .img-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 24px;
-        margin-top: 24px;
-    }
-
-    .img-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border-color);
+    /* ===== Image Display (Contextual) ===== */
+    .content-img-wrapper {
+        margin: 20px 0 35px 0;
+        background: #fdfdfd;
+        border: 1px solid #eee;
         border-radius: 12px;
-        overflow: hidden;
-        padding: 12px;
+        padding: 15px;
+        text-align: center;
     }
 
-    .img-card img {
-        width: 100%;
+    .content-img-wrapper img {
+        max-width: 100%;
         height: auto;
         border-radius: 8px;
-        display: block;
-        transition: transform 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
-    .img-card:hover img {
-        transform: scale(1.03);
-    }
-    
     .img-caption {
-        text-align: center;
-        font-size: 13px;
-        color: var(--text-muted);
-        margin-top: 12px;
+        font-size: 14px;
+        color: #888;
+        margin-top: 10px;
+    }
+
+    /* Multi-image layout for database section */
+    .img-row {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .img-row img {
+        max-width: 48%; /* 讓兩張圖可以並排 */
     }
 
 </style>
@@ -269,19 +228,19 @@
 <body>
 
 <nav>
-    <a href="index.html">Overview</a>
-    <a href="projects.html" class="active">Architecture & Projects</a>
+    <a href="index.html">Home</a>
+    <a href="projects.html" class="active">Projects</a>
 </nav>
 
 <div class="section">
-    <div class="title">Technical Portfolio</div>
+    <div class="title">🚀 Projects</div>
 
     <div class="card" onclick="openModal()">
-        <div class="project-title">Enterprise Inventory Management System</div>
+        <div class="project-title">企業進銷存管理系統 (Inventory Management)</div>
         <div class="meta">
-            <span class="badge">System Architecture</span>
-            <span class="badge">Database Design</span>
-            <span>Click to view system details ➔</span>
+            <span class="badge">系統分析</span>
+            <span class="badge">資料庫設計</span>
+            <span>👉 點擊查看專案細節與架構</span>
         </div>
     </div>
 </div>
@@ -290,66 +249,59 @@
     <div class="modal-content" id="modal-content">
         <span class="close" onclick="closeModal()">×</span>
 
-        <h2>Enterprise Inventory Management System</h2>
-        <div class="meta" style="margin-bottom: 32px;">
-            <span class="badge">End-to-End Development</span>
-            <span class="badge">Lazarus IDE</span>
+        <h2>鞋類企業進銷存系統</h2>
+        <div class="meta" style="margin-bottom: 25px;">
+            <span class="badge" style="background:#FFE0C4; color:#a66c37;">個人獨立開發</span>
+            <span class="badge" style="background:#E0F7FA; color:#2e7d85;">Lazarus IDE</span>
         </div>
 
-        <div class="subtitle">🎯 Architecture Overview</div>
         <p>
-            在「靜香鞋類進銷存系統」中，我負責端到端系統開發。此專案最大的亮點在於<strong>前期嚴謹的系統分析與架構設計</strong>，而非單純程式實作。良好的地基是維持系統擴充性與穩健度的關鍵。
+            這是我負責獨立開發的「靜香鞋類進銷存系統」。這個專案我把重點放在<strong>前期的系統分析和資料庫設計</strong>，先把架構跟邏輯想清楚，後續寫程式時才不會一團亂。
         </p>
 
-        <div class="subtitle">🧠 System Analysis</div>
+        <div class="subtitle">1. 系統分析與流程定義</div>
         <p>
-            為了解決零售業中會員、銷貨、庫存與財務四大模組的複雜邏輯，我從需求塑模開始，繪製兩階資料流程圖（DFD），完整定義資料流動與系統行為。
+            為了解決零售業最核心的四個部分：會員、銷貨、庫存和財務，我先畫了資料流程圖 (DFD)。透過這個步驟，我可以很清楚地定義資料在系統裡怎麼流動、每個功能模組該做什麼事。
         </p>
-
-        <div class="subtitle">🗂 Database Normalization</div>
-        <p>
-            在資料庫設計中，建立完整 ERD 並進行正規化處理，確保資料的一致性與查詢效能：
-        </p>
-        <ul>
-            <li><strong>解耦與獨立：</strong>將會員資訊從訂單表拆分，避免資料冗餘。</li>
-            <li><strong>關聯性約束：</strong>使用 PK / FK 建立嚴謹關聯，透過「會員編號」串接資料。</li>
-            <li><strong>防呆機制：</strong>從資料庫層級確保訂單與帳務資料一致性，降低後端邏輯錯誤風險。</li>
-        </ul>
-
-        <div class="subtitle">⚙️ Implementation</div>
-        <ul>
-            <li>使用 Lazarus IDE 快速開發 20+ UI 畫面，實踐快速迭代。</li>
-            <li>專注後端 CRUD 操作與邊界條件的防呆邏輯。</li>
-            <li>完成進銷存模組與財務自動化系統的整合。</li>
-        </ul>
-
-        <div class="subtitle">📊 System Artifacts</div>
         
-        <div class="img-grid">
-            <div class="img-card">
-                <img src="images/DFD.png" alt="Data Flow Diagram">
-                <div class="img-caption">Data Flow Diagram (DFD)</div>
+        <div class="content-img-wrapper">
+            <img src="images/DFD.png" alt="資料流程圖">
+            <div class="img-caption">▲ 系統資料流程圖 (DFD)</div>
+        </div>
+
+        <div class="subtitle">2. 資料庫設計與正規化</div>
+        <p>
+            流程釐清後，接著就是畫 ERD 並做資料庫的正規化。主要是為了確保資料庫的乾淨跟效能：
+        </p>
+        <ul>
+            <li><strong>減少重複：</strong>把會員資料從訂單表裡面獨立出來，避免資料冗餘。</li>
+            <li><strong>設定關聯：</strong>把 PK / FK 設好，透過「會員編號」去串接其他資料。</li>
+            <li><strong>維持一致性：</strong>從資料庫底層去確保訂單跟帳務不會對不上，減少後端程式出錯的機會。</li>
+        </ul>
+
+        <div class="content-img-wrapper">
+            <div class="img-row">
+                <img src="images/ERD.png" alt="ERD">
+                <img src="images/Normalization.png" alt="正規化">
             </div>
-            <div class="img-card">
-                <img src="images/ERD.png" alt="Entity Relationship Diagram">
-                <div class="img-caption">Entity Relationship Diagram</div>
+            <div class="img-caption">▲ ERD 設計與資料庫正規化過程</div>
+        </div>
+        <div class="content-img-wrapper" style="margin-top: -20px;">
+            <img src="images/datadictionary.png" alt="資料字典">
+            <div class="img-caption">▲ 資料字典 (Data Dictionary)</div>
+        </div>
+
+        <div class="subtitle">3. 介面與功能實作</div>
+        <p>
+            底層架構都確認沒問題後，我使用 Lazarus IDE 開發了 20 多個使用者介面。實作的重點放在基本的 CRUD 操作，以及邊界條件的防呆設計，順利把進銷存跟財務系統完整串接起來。
+        </p>
+
+        <div class="content-img-wrapper">
+            <div class="img-row">
+                <img src="images/System.png" alt="系統畫面">
+                <img src="images/database.png" alt="資料庫實作">
             </div>
-            <div class="img-card">
-                <img src="images/Normalization.png" alt="Database Normalization">
-                <div class="img-caption">Normalization Process</div>
-            </div>
-            <div class="img-card">
-                <img src="images/datadictionary.png" alt="Data Dictionary">
-                <div class="img-caption">Data Dictionary</div>
-            </div>
-            <div class="img-card">
-                <img src="images/System.png" alt="System UI">
-                <div class="img-caption">System Interface</div>
-            </div>
-            <div class="img-card">
-                <img src="images/database.png" alt="Database Structure">
-                <div class="img-caption">Database Implementation</div>
-            </div>
+            <div class="img-caption">▲ 實際系統介面與後端資料庫畫面</div>
         </div>
 
     </div>
@@ -360,7 +312,6 @@
 
     function openModal() {
         modal.style.display = "flex";
-        // 延遲一點點加入 class 觸發 CSS 動畫
         setTimeout(() => {
             modal.classList.add("show");
         }, 10);
@@ -369,7 +320,6 @@
 
     function closeModal() {
         modal.classList.remove("show");
-        // 等待動畫結束後再隱藏
         setTimeout(() => {
             modal.style.display = "none";
             document.body.style.overflow = "auto";
