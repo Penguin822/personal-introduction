@@ -1,88 +1,329 @@
 <!DOCTYPE html>
-<html>
-<head><title>Research</title>
-    <style>
-:root{
-    --primary:#FFE0C4;
-    --primary-dark:#f5cba7;
-    --text:#2b2b2b;
-    --shadow:0 10px 30px rgba(0,0,0,0.08);
-}
-body{
-    margin:0;
-    font-family:"Segoe UI", sans-serif;
-    background:#fff;
-    color:var(--text);
-}
-nav{
-    position:sticky;
-    top:0;
-    background:var(--primary);
-    display:flex;
-    justify-content:center;
-    gap:18px;
-    padding:14px;
-    box-shadow:var(--shadow);
-}
-nav a{
-    text-decoration:none;
-    color:#333;
-    padding:8px 12px;
-    border-radius:8px;
-    transition:.3s;
-}
-nav a:hover{
-    background:var(--primary-dark);
-    transform:translateY(-2px);
-}
-.section{
-    padding:60px 20px;
-    max-width:1000px;
-    margin:auto;
-}
-.card{
-    background:#fff;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:var(--shadow);
-    margin:10px 0;
-    transition:.3s;
-}
-.card:hover{
-    transform:translateY(-6px);
-}
-.hero{
-    height:80vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(120deg,var(--primary),#fff);
-    text-align:center;
-}
-.btn{
-    padding:12px 20px;
-    background:var(--primary);
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-}
-.btn:hover{background:var(--primary-dark);}
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research & Projects | Portfolio</title>
+<style>
+    :root {
+        --primary: #FFE0C4;
+        --primary-dark: #f5cba7;
+        --secondary: #FFD6E0;
+        --accent-blue: #E0F7FA;
+        --accent-green: #E8F5E9;
+        --bg-light: #fafafa;
+        --text-main: #2b2b2b;
+        --text-muted: #666666;
+        --border: #f0f0f0;
+        --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background-color: var(--bg-light);
+        color: var(--text-main);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== Navigation ===== */
+    nav {
+        position: sticky;
+        top: 0;
+        background: var(--primary);
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        padding: 14px;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #333;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    nav a:hover, nav a.active {
+        background: var(--primary-dark);
+    }
+
+    /* ===== Layout ===== */
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 24px 80px 24px;
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+        text-align: center;
+        margin-bottom: 50px;
+        background: linear-gradient(120deg, #fff, var(--primary));
+        padding: 50px 20px;
+        border-radius: 24px;
+        box-shadow: var(--shadow-soft);
+        animation: fadeIn 0.8s ease;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+        font-weight: bold;
+        margin: 0 0 12px 0;
+        color: var(--text-main);
+    }
+
+    .hero p {
+        font-size: 16px;
+        color: var(--text-muted);
+        margin: 0 auto;
+        font-weight: 500;
+    }
+
+    /* ===== Common Card Style ===== */
+    .card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 35px;
+        margin-bottom: 30px;
+        box-shadow: var(--shadow-soft);
+        border-top: 6px solid var(--primary-dark);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeIn 0.8s ease backwards;
+    }
+
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .section-title {
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-main);
+    }
+
+    /* ===== Bullet Points (Presentation Style) ===== */
+    .point-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 20px 0;
+    }
+
+    .point-list li {
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 12px;
+        font-size: 16px;
+        color: var(--text-muted);
+    }
+
+    .point-list li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        top: -2px;
+        font-size: 20px;
+        color: var(--primary-dark);
+        font-weight: bold;
+    }
+
+    .point-list strong {
+        color: var(--text-main);
+    }
+
+    /* ===== Highlight Value Box ===== */
+    .value-box {
+        background: #fff8f2;
+        border-left: 4px solid var(--primary-dark);
+        padding: 15px 18px;
+        border-radius: 0 8px 8px 0;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .value-box.award {
+        border-left-color: #f59e0b;
+        background: #fffbeb;
+    }
+
+    .value-box h4 {
+        margin: 0 0 6px 0;
+        font-size: 16px;
+        color: var(--text-main);
+    }
+
+    .value-box p {
+        margin: 0;
+        font-size: 15px;
+        color: var(--text-muted);
+    }
+
+    /* ===== Tech Stack Tags ===== */
+    .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .tag {
+        background: var(--bg-light);
+        border: 1px solid #ddd;
+        padding: 4px 12px;
+        border-radius: 6px;
+        font-size: 13px;
+        color: var(--text-main);
+        font-weight: 500;
+    }
+
+    /* ===== Image Contextual Wrapper ===== */
+    .content-img-wrapper {
+        margin: 25px 0 0 0;
+        background: #fcfcfc;
+        border: 1px solid #eee;
+        border-radius: 16px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .img-grid {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .img-wrapper {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        flex: 1;
+        min-width: 300px;
+    }
+
+    .img-wrapper img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    .img-wrapper:hover img {
+        transform: scale(1.02);
+    }
+
+    .img-caption {
+        font-size: 14px;
+        color: #888;
+        margin-top: 15px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+        .img-grid { flex-direction: column; }
+    }
 </style>
 </head>
 <body>
+
 <nav>
-<a href="education.html">Education</a>
-<a href="courses.html">Courses</a>
-<a href="projects.html">Projects</a>
-<a href="research.html">Research</a>
-<a href="internship.html">Internship</a>
-<a href="others.html">Others</a>
+    <a href="index.html">Home</a>
+    <a href="education.html">Education</a>
+    <a href="courses.html">Courses</a>
+    <a href="projects.html">Projects</a>
+    <a href="research.html" class="active">Research</a>
+    <a href="internship.html">Internship</a>
+    <a href="others.html">Others</a>
 </nav>
-<div class="section">
-<div class="card">Medical Image Adversarial Attack</div>
-<div class="card">Diffusion Model Restoration</div>
-<div class="card">AI Security in Healthcare</div>
+
+<div class="container">
+    
+    <div class="hero">
+        <h1>學術研究 & 畢業專題</h1>
+        <p>從落地商業化 APP 開發，到前瞻 AI 資安防禦演算法</p>
+    </div>
+
+    <div class="card" style="animation-delay: 0.1s;">
+        <h2 class="section-title">📱 大學專題：生成式 AI 彰化在地文化遊程 App</h2>
+        <div class="tech-tags">
+            <span class="tag">Generative AI</span>
+            <span class="tag">Unity 引擎</span>
+            <span class="tag">Team Leadership</span>
+            <span class="tag">跨領域合作</span>
+        </div>
+        
+        <ul class="point-list">
+            <li><strong>專案目標：</strong> 結合生成式 AI 聊天機器人與 Unity 開發引擎，打造具備高度互動性與商業潛力的彰化旅遊導覽系統。</li>
+            <li><strong>專案管理與協作：</strong> 擔任總召帶領 5 人開發團隊，主導從前期需求訪談、技術架構規劃，到最終全端系統落地的完整開發生命週期。</li>
+            <li><strong>技術商業化：</strong> 成功將前瞻技術與實際商業模式結合，有效解決在地文化推廣痛點，證明專案具備落地營運的潛力。</li>
+        </ul>
+
+        <div class="value-box award">
+            <h4>🏆 專案成效與肯定</h4>
+            <p>技術實力與商務規劃獲業界高度認可，榮獲 <strong>2023 Acer 企業獎</strong> 及 <strong>國泰卓越獎助計畫</strong>。</p>
+        </div>
+
+        <div class="content-img-wrapper">
+            <div class="img-grid">
+                <div class="img-wrapper">
+                    <img src="images/app-ui-unity.png" alt="App 介面與 Unity 場景">
+                </div>
+                <div class="img-wrapper">
+                    <img src="images/award-photo.png" alt="團隊獲獎合照">
+                </div>
+            </div>
+            <div class="img-caption">▲ App 互動介面展示與團隊獲獎紀錄</div>
+        </div>
+    </div>
+
+    <div class="card" style="animation-delay: 0.2s;">
+        <h2 class="section-title">🔬 碩士論文：醫療影像對抗性攻擊與防禦框架 (SADI-Def)</h2>
+        <div class="tech-tags">
+            <span class="tag">AI Security</span>
+            <span class="tag">Diffusion Models</span>
+            <span class="tag">One-Pixel Attack</span>
+            <span class="tag">MedMNIST</span>
+            <span class="tag">Frequency-Domain</span>
+        </div>
+        
+        <ul class="point-list">
+            <li><strong>研究背景：</strong> 探討醫療 AI 輔助診斷系統，面對極微小擾動（單像素攻擊 One-Pixel Attack）時的脆弱性與資安風險。</li>
+            <li><strong>核心防禦機制 (SADI-Def)：</strong> 研發輕量且高保真的防禦框架。結合<strong>「頻域高通濾波」</strong>精準定位受攻擊的空間像素，並運用<strong>「擴散模型 (Diffusion Inpainting)」</strong>進行局部修復。</li>
+            <li><strong>臨床語意保留：</strong> 確保在濾除惡意干擾雜訊的同時，完整保留醫療影像的病徵語意，維持 AI 診斷的準確度與可信賴度。</li>
+        </ul>
+
+        <div class="content-img-wrapper">
+            <div class="img-grid">
+                <div class="img-wrapper">
+                    <img src="images/sadi-def-architecture.png" alt="SADI-Def 系統架構圖">
+                </div>
+                <div class="img-wrapper">
+                    <img src="images/medical-image-restoration.png" alt="醫療影像修復對比圖">
+                </div>
+            </div>
+            <div class="img-caption">▲ SADI-Def 防禦框架架構與擴散模型影像修復成果對比</div>
+        </div>
+    </div>
+
 </div>
+
 </body>
 </html>
