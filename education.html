@@ -47,39 +47,42 @@ nav a:hover{
     margin:auto;
 }
 
-/* ===== 標題 ===== */
 .title{
     font-size:32px;
     margin-bottom:30px;
 }
 
-/* ===== 卡片 ===== */
+/* ===== Card ===== */
 .card{
     display:flex;
     gap:30px;
     align-items:center;
-    background:#fff;
+    background:#FFE0C4;
     padding:30px;
     border-radius:16px;
     margin:30px 0;
     border-left:6px solid var(--primary);
+
     opacity:0;
-    transform:translateY(40px);
-    transition:all 0.8s ease;
+    transform:translateY(80px) scale(0.95);
+    transition:all 1s cubic-bezier(0.22, 1, 0.36, 1);
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.05);
 }
 
-/* 入場動畫 */
+/* ===== Scroll 出現 ===== */
 .card.show{
     opacity:1;
-    transform:translateY(0);
+    transform:translateY(0) scale(1);
 }
 
+/* ===== Hover ===== */
 .card:hover{
-    transform:translateY(-8px);
-    background:#fff8f2;
+    background:#FFE6D9;
+    box-shadow:0 20px 50px rgba(0,0,0,0.15);
 }
 
-/* 左右區塊 */
+/* ===== 左右區塊 ===== */
 .text{
     flex:1;
 }
@@ -90,21 +93,21 @@ nav a:hover{
     justify-content:center;
 }
 
-/* 圖片 */
+/* ===== 圖片 ===== */
 .image img{
     width:260px;
     border-radius:20px;
     box-shadow:0 10px 25px rgba(0,0,0,0.1);
     animation:float 4s ease-in-out infinite;
-    transition:.3s;
+    transition:transform 0.6s ease;
 }
 
-/* hover 更吸睛 */
+/* hover 圖片 */
 .image img:hover{
     transform:scale(1.08) rotate(1deg);
 }
 
-/* 漂浮動畫（呼吸感） */
+/* 漂浮動畫 */
 @keyframes float{
     0%{ transform:translateY(0px);}
     50%{ transform:translateY(-12px);}
@@ -142,7 +145,26 @@ li{
     color:#d35400;
 }
 
-/* RWD */
+/* ===== 文字動畫（逐行出現）===== */
+.text > *{
+    opacity:0;
+    transform:translateY(20px);
+    transition:all 0.6s ease;
+}
+
+.card.show .text > *:nth-child(1){transition-delay:0.1s;}
+.card.show .text > *:nth-child(2){transition-delay:0.2s;}
+.card.show .text > *:nth-child(3){transition-delay:0.3s;}
+.card.show .text > *:nth-child(4){transition-delay:0.4s;}
+.card.show .text > *:nth-child(5){transition-delay:0.5s;}
+.card.show .text > *:nth-child(6){transition-delay:0.6s;}
+
+.card.show .text > *{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ===== RWD ===== */
 @media(max-width:768px){
     .card{
         flex-direction:column;
@@ -176,7 +198,7 @@ li{
 
 <div class="subtitle">學術成就</div>
 <ul>
-<li>張俊彥校長紀念獎學金</li>
+<li>113、114學年度[張俊彥校長紀念獎學金]</li>
 </ul>
 
 <div class="subtitle">研究領域</div>
@@ -207,8 +229,8 @@ li{
 
 <div class="subtitle">學術成就</div>
 <ul>
-<li>管理學院優秀學生獎（第一名）</li>
-<li>連德李連來校外獎學金</li>
+<li>112學年度-管理學院優秀學生獎（第一名）</li>
+<li>110學年度-連德李連來校外獎學金</li>
 </ul>
 
 <div class="subtitle">專題</div>
@@ -230,7 +252,7 @@ li{
 </div>
 
 <script>
-// scroll 入場動畫
+// ===== Scroll Reveal =====
 const cards = document.querySelectorAll('.card');
 
 const observer = new IntersectionObserver(entries => {
@@ -242,6 +264,33 @@ const observer = new IntersectionObserver(entries => {
 },{ threshold:0.2 });
 
 cards.forEach(card => observer.observe(card));
+
+
+// ===== Apple 滑鼠 3D 傾斜 =====
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const moveX = (x - centerX) / 25;
+        const moveY = (y - centerY) / 25;
+
+        card.style.transform = `
+            translateY(-10px)
+            rotateX(${ -moveY }deg)
+            rotateY(${ moveX }deg)
+            scale(1.02)
+        `;
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+    });
+});
 </script>
 
 </body>
