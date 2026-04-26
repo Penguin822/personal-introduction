@@ -213,7 +213,7 @@
         color: var(--text-main);
     }
 
-    /* ===== Image Display ===== */
+    /* ===== Image Display (修復變形問題) ===== */
     .content-img-wrapper {
         margin: 20px 0 35px 0;
         background: #fdfdfd;
@@ -228,6 +228,7 @@
         height: auto;
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        object-fit: contain; /* 強制保持原始比例 */
     }
 
     .img-caption {
@@ -240,10 +241,14 @@
         display: flex;
         gap: 15px;
         justify-content: center;
+        align-items: flex-start; /* 關鍵：防止較矮的圖片被強制拉長 */
         flex-wrap: wrap;
     }
+    
     .img-row img {
-        max-width: 48%; 
+        width: 48%; /* 並排顯示 */
+        max-width: 380px; 
+        height: auto !important; /* 避免高度被 Flexbox 覆寫 */
     }
 </style>
 </head>
