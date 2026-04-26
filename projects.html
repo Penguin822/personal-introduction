@@ -14,8 +14,6 @@
 body{
     margin:0;
     font-family:"Segoe UI", sans-serif;
-    background:#fff;
-    color:var(--text);
 }
 
 /* ===== Navbar ===== */
@@ -33,11 +31,9 @@ nav a{
     color:#333;
     padding:8px 12px;
     border-radius:8px;
-    transition:.3s;
 }
 nav a:hover{
     background:var(--primary-dark);
-    transform:translateY(-2px);
 }
 
 /* ===== Section ===== */
@@ -59,15 +55,14 @@ nav a:hover{
     border-radius:14px;
     margin-bottom:25px;
     border-left:6px solid var(--primary);
+    cursor:pointer;
     transition:.3s;
 }
-
 .card:hover{
     transform:translateY(-6px);
     background:#fff8f2;
 }
 
-/* ===== Title ===== */
 .project-title{
     font-size:20px;
     font-weight:bold;
@@ -75,38 +70,65 @@ nav a:hover{
 
 .meta{
     color:#666;
-    margin-bottom:10px;
 }
 
-/* ===== Tags ===== */
-.tags{
-    margin:10px 0;
-}
-.tag{
-    display:inline-block;
-    background:#fce5cd;
-    padding:4px 8px;
-    margin:3px;
-    border-radius:6px;
-    font-size:12px;
-}
-
-/* ===== Image placeholder ===== */
-.img-box{
-    margin-top:15px;
-    height:180px;
-    background:#f5f5f5;
-    border-radius:10px;
-    display:flex;
-    align-items:center;
+/* ===== MODAL ===== */
+.modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    display:none;
     justify-content:center;
-    color:#aaa;
-    font-size:14px;
+    align-items:center;
 }
 
-/* ===== List ===== */
-ul{
-    padding-left:20px;
+.modal-content{
+    background:#fff;
+    width:90%;
+    max-width:1000px;
+    height:90%;
+    overflow:auto;
+    border-radius:16px;
+    padding:30px;
+    animation:fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.9);}
+    to{opacity:1; transform:scale(1);}
+}
+
+.close{
+    float:right;
+    cursor:pointer;
+    font-size:20px;
+}
+
+/* ===== Images ===== */
+.img-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+    margin-top:20px;
+}
+
+.img-grid img{
+    width:100%;
+    border-radius:10px;
+    transition:.3s;
+}
+.img-grid img:hover{
+    transform:scale(1.05);
+}
+
+/* ===== Section Title ===== */
+.subtitle{
+    margin-top:20px;
+    font-weight:bold;
+    font-size:18px;
 }
 
 </style>
@@ -116,116 +138,82 @@ ul{
 
 <nav>
 <a href="index.html">Home</a>
-<a href="education.html">Education</a>
-<a href="courses.html">Courses</a>
 <a href="projects.html">Projects</a>
-<a href="research.html">Research</a>
-<a href="internship.html">Internship</a>
-<a href="others.html">Others</a>
 </nav>
 
 <div class="section">
 
 <div class="title">🚀 Projects</div>
 
-<!-- 🔥 Research Project -->
-<div class="card">
-<div class="project-title">Medical Image Adversarial Attack</div>
-<div class="meta">ResNet50 + One Pixel Attack + Differential Evolution</div>
-
-<div class="tags">
-<span class="tag">Deep Learning</span>
-<span class="tag">Adversarial Attack</span>
-<span class="tag">Medical Imaging</span>
-<span class="tag">AI Security</span>
-</div>
-
-<ul>
-<li>針對醫療影像模型進行對抗攻擊分析</li>
-<li>使用 One Pixel Attack 與 DE 改變分類結果</li>
-<li>探討 AI 在醫療應用中的安全性與穩健性</li>
-</ul>
-
-<div class="img-box">
-👉 這裡可放「攻擊前 / 攻擊後」圖片
-</div>
-</div>
-
-<!-- ===== Course Project 1 ===== -->
-<div class="card">
+<!-- Project 1 -->
+<div class="card" onclick="openModal()">
 <div class="project-title">Enterprise Inventory Management System</div>
-<div class="meta">系統分析與設計</div>
-
-<div class="tags">
-<span class="tag">SDLC</span>
-<span class="tag">MySQL</span>
-<span class="tag">ERD</span>
-<span class="tag">DFD</span>
-<span class="tag">Lazarus</span>
+<div class="meta">👉 點擊查看完整專案（面試重點）</div>
 </div>
 
+</div>
+
+<!-- ===== MODAL ===== -->
+<div class="modal" id="modal">
+<div class="modal-content">
+
+<span class="close" onclick="closeModal()">✖</span>
+
+<h2>Enterprise Inventory Management System</h2>
+
+<div class="subtitle">🎯 Project Overview</div>
+<p>
+在「靜香鞋類進銷存系統」中，我負責端到端系統開發。此專案最大的亮點在於<strong>前期嚴謹的系統分析與架構設計</strong>，而非單純程式實作。
+</p>
+
+<div class="subtitle">🧠 System Analysis（核心亮點）</div>
+<p>
+為了解決零售業中會員、銷貨、庫存與財務四大模組的複雜邏輯，我從需求塑模開始，繪製兩階資料流程圖（DFD），完整定義資料流動與系統行為。
+</p>
+
+<div class="subtitle">🗂 Database Design（ERD + 正規化）</div>
+<p>
+在資料庫設計中，我建立完整 ERD 並進行正規化：
+</p>
 <ul>
-<li>完整主導 SDLC，建立會員 / 銷貨 / 庫存 / 財務系統</li>
-<li>繪製 DFD 與 ERD，定義 40+ 業務流程</li>
-<li>實作 20+ 功能模組，完成進銷存自動化</li>
+<li>避免資料冗餘（會員資料獨立）</li>
+<li>使用 PK / FK 建立關聯</li>
+<li>確保訂單與帳務資料一致性</li>
 </ul>
-</div>
 
-<!-- ===== Course Project 2 ===== -->
-<div class="card">
-<div class="project-title">Web-based Movie Ticketing System</div>
-<div class="meta">資料庫課程專案</div>
+<p>
+例如：將會員資訊從訂單表拆分，透過「會員編號」建立關聯，大幅降低資料重複與錯誤風險。
+</p>
 
-<div class="tags">
-<span class="tag">PHP</span>
-<span class="tag">HTML</span>
-<span class="tag">CSS</span>
-<span class="tag">MySQL</span>
-</div>
-
+<div class="subtitle">⚙️ Implementation（實作）</div>
 <ul>
-<li>設計完整資料庫 schema</li>
-<li>實作電影訂票與劃位系統</li>
+<li>Lazarus IDE 快速開發 20+ UI 畫面</li>
+<li>專注後端 CRUD 與防呆邏輯</li>
+<li>完成進銷存 + 財務自動化系統</li>
 </ul>
-</div>
 
-<!-- ===== Course Project 3 ===== -->
-<div class="card">
-<div class="project-title">Depression Prediction Model</div>
-<div class="meta">資料探勘 / Kaggle</div>
+<div class="subtitle">📊 System Artifacts</div>
 
-<div class="tags">
-<span class="tag">Python</span>
-<span class="tag">Machine Learning</span>
-<span class="tag">Feature Engineering</span>
-</div>
-
-<ul>
-<li>使用 NB, KNN, SVM, Random Forest, XGBoost</li>
-<li>進行特徵選擇與模型比較</li>
-<li>建立最佳預測模型</li>
-</ul>
-</div>
-
-<!-- ===== Course Project 4 ===== -->
-<div class="card">
-<div class="project-title">AWS Cloud Monitoring System</div>
-<div class="meta">雲端計算</div>
-
-<div class="tags">
-<span class="tag">AWS EC2</span>
-<span class="tag">Lambda</span>
-<span class="tag">RDS</span>
-<span class="tag">SNS</span>
-</div>
-
-<ul>
-<li>建立雲端設備監控系統</li>
-<li>使用 Serverless 架構進行自動化監控</li>
-</ul>
+<div class="img-grid">
+<img src="images/DFD.png">
+<img src="images/ERD.png">
+<img src="images/Normalization.png">
+<img src="images/datadictionary.png">
+<img src="images/System.png">
+<img src="images/database.png">
 </div>
 
 </div>
+</div>
+
+<script>
+function openModal(){
+    document.getElementById("modal").style.display="flex";
+}
+function closeModal(){
+    document.getElementById("modal").style.display="none";
+}
+</script>
 
 </body>
 </html>
