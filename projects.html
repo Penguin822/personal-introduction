@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects</title>
+<title>Projects | Portfolio</title>
 
 <style>
     :root {
         --primary: #FFE0C4;
         --primary-dark: #f5cba7;
-        --secondary: #FFD6E0; /* 柔和粉，點綴用 */
+        --secondary: #FFD6E0; /* 柔和粉 */
         --bg-light: #fafafa;
         --text-main: #2b2b2b;
         --text-muted: #666666;
@@ -84,17 +84,18 @@
     }
 
     .project-title {
-        font-size: 22px;
+        font-size: 20px;
         font-weight: bold;
         margin-bottom: 8px;
     }
 
     .meta {
         color: var(--text-muted);
-        font-size: 15px;
+        font-size: 14px;
         display: flex;
         align-items: center;
-        gap: 10px;
+        flex-wrap: wrap;
+        gap: 8px;
     }
 
     .badge {
@@ -159,6 +160,7 @@
         font-size: 28px;
         cursor: pointer;
         transition: 0.2s;
+        z-index: 10;
     }
 
     .close:hover {
@@ -167,7 +169,7 @@
 
     /* ===== Modal Content Typography ===== */
     .modal-content h2 {
-        font-size: 28px;
+        font-size: 26px;
         margin-top: 0;
         margin-bottom: 12px;
         color: var(--text-main);
@@ -188,7 +190,17 @@
         font-size: 16px;
     }
 
-    /* ===== Image Display (Contextual) ===== */
+    .quote-box {
+        background: #fff8f2;
+        border-left: 4px solid #f5cba7;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 0 8px 8px 0;
+        font-size: 15px;
+        color: #555;
+    }
+
+    /* ===== Image Display ===== */
     .content-img-wrapper {
         margin: 20px 0 35px 0;
         background: #fdfdfd;
@@ -211,7 +223,6 @@
         margin-top: 10px;
     }
 
-    /* Multi-image layout for database section */
     .img-row {
         display: flex;
         gap: 15px;
@@ -219,9 +230,8 @@
         flex-wrap: wrap;
     }
     .img-row img {
-        max-width: 48%; /* 讓兩張圖可以並排 */
+        max-width: 48%; 
     }
-
 </style>
 </head>
 
@@ -229,54 +239,67 @@
 
 <nav>
     <a href="index.html">Home</a>
+    <a href="education.html">Education</a>
+    <a href="courses.html">Courses</a>
     <a href="projects.html" class="active">Projects</a>
+    <a href="research.html">Research</a>
+    <a href="internship.html">Internship</a>
+    <a href="others.html">Others</a>
 </nav>
 
 <div class="section">
-    <div class="title">🚀 Projects</div>
+    <div class="title">🚀 Academic Projects</div>
 
-    <div class="card" onclick="openModal()">
-        <div class="project-title">企業進銷存管理系統 (Inventory Management)</div>
+    <div class="card" onclick="openModal('modal-1')">
+        <div class="project-title">1. 企業進銷存管理系統 (Inventory Management)</div>
         <div class="meta">
-            <span class="badge">系統分析與設計</span>
+            <span class="badge">系統分析</span>
+            <span class="badge">資料庫設計</span>
+            <span>👉 點擊查看細節</span>
+        </div>
+    </div>
+
+    <div class="card" onclick="openModal('modal-2')">
+        <div class="project-title">2. 全端電影購票與劃位系統 (Movie Ticketing System)</div>
+        <div class="meta">
+            <span class="badge" style="background:#E0F7FA; color:#2e7d85;">PHP</span>
+            <span class="badge" style="background:#E0F7FA; color:#2e7d85;">MySQL</span>
+            <span class="badge" style="background:#E0F7FA; color:#2e7d85;">HTML/CSS</span>
+            <span>👉 點擊查看細節</span>
+        </div>
+    </div>
+
+    <div class="card" onclick="openModal('modal-3')">
+        <div class="project-title">3. 學生憂鬱症成因分析與預測模型 (Data Mining & ML)</div>
+        <div class="meta">
+            <span class="badge" style="background:#E8F5E9; color:#2e7d32;">Python</span>
+            <span class="badge" style="background:#E8F5E9; color:#2e7d32;">Scikit-learn</span>
+            <span class="badge" style="background:#E8F5E9; color:#2e7d32;">XGBoost</span>
+            <span>👉 點擊查看細節</span>
+        </div>
+    </div>
+
+    <div class="card" onclick="openModal('modal-4')">
+        <div class="project-title">4. AWS 雲端自動化設備維護與監控系統</div>
+        <div class="meta">
+            <span class="badge" style="background:#FFF3E0; color:#e65100;">AWS EC2 & RDS</span>
+            <span class="badge" style="background:#FFF3E0; color:#e65100;">Serverless (Lambda)</span>
+            <span>👉 點擊查看細節</span>
         </div>
     </div>
 </div>
 
-<div class="modal" id="modal" onclick="closeOnOutsideClick(event)">
-    <div class="modal-content" id="modal-content">
-        <span class="close" onclick="closeModal()">×</span>
-
+<div class="modal" id="modal-1" onclick="closeOnOutsideClick(event, 'modal-1')">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-1')">×</span>
         <h2>鞋類企業進銷存系統</h2>
         <div class="meta" style="margin-bottom: 25px;">
             <span class="badge" style="background:#FFE0C4; color:#a66c37;">個人獨立開發</span>
             <span class="badge" style="background:#E0F7FA; color:#2e7d85;">Lazarus IDE</span>
         </div>
-
-        <p>
-            這是我負責獨立開發的「靜香鞋類進銷存系統」。這個專案我把重點放在<strong>前期的系統分析和資料庫設計</strong>，先把架構跟邏輯想清楚，後續寫程式時才不會一團亂。
-        </p>
-
-        <div class="subtitle">1. 系統分析與流程定義</div>
-        <p>
-            為了解決零售業最核心的四個部分：會員、銷貨、庫存和財務，我先畫了資料流程圖 (DFD)。透過這個步驟，我可以很清楚地定義資料在系統裡怎麼流動、每個功能模組該做什麼事。
-        </p>
+        <p>這是我負責獨立開發的「靜香鞋類進銷存系統」。重點放在<strong>前期的系統分析和資料庫設計</strong>，先把架構想清楚，後續寫程式才不會亂。</p>
         
-        <div class="content-img-wrapper">
-            <img src="images/DFD.png" alt="資料流程圖">
-            <div class="img-caption">▲ 系統資料流程圖 (DFD)</div>
-        </div>
-
-        <div class="subtitle">2. 資料庫設計與正規化</div>
-        <p>
-            流程釐清後，接著就是畫 ERD 並做資料庫的正規化。主要是為了確保資料庫的乾淨跟效能：
-        </p>
-        <ul>
-            <li><strong>減少重複：</strong>把會員資料從訂單表裡面獨立出來，避免資料冗餘。</li>
-            <li><strong>設定關聯：</strong>把 PK / FK 設好，透過「會員編號」去串接其他資料。</li>
-            <li><strong>維持一致性：</strong>從資料庫底層去確保訂單跟帳務不會對不上，減少後端程式出錯的機會。</li>
-        </ul>
-
+        <div class="subtitle">系統分析與資料庫正規化</div>
         <div class="content-img-wrapper">
             <div class="img-row">
                 <img src="images/ERD.png" alt="ERD">
@@ -284,51 +307,152 @@
             </div>
             <div class="img-caption">▲ ERD 設計與資料庫正規化過程</div>
         </div>
-        <div class="content-img-wrapper" style="margin-top: -20px;">
-            <img src="images/datadictionary.png" alt="資料字典">
-            <div class="img-caption">▲ 資料字典 (Data Dictionary)</div>
-        </div>
+    </div>
+</div>
 
-        <div class="subtitle">3. 介面與功能實作</div>
+<div class="modal" id="modal-2" onclick="closeOnOutsideClick(event, 'modal-2')">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-2')">×</span>
+        <h2>全端電影購票與劃位系統</h2>
+        
         <p>
-            底層架構都確認沒問題後，我使用 Lazarus IDE 開發了 20 多個使用者介面。實作的重點放在基本的 CRUD 操作，以及邊界條件的防呆設計，順利把進銷存跟財務系統完整串接起來。
+            這個專案我使用了比較經典的網頁開發技術組合（HTML、CSS 和 PHP）來打造完整的電影購票系統。雖然作法比較傳統，但非常考驗對前後端資料傳遞與資料庫狀態管理的掌握度。
         </p>
 
+        <div class="subtitle">1. 資料庫建模與綱要設計</div>
+        <p>
+            在寫程式前，我先針對電影場次、座位狀態、會員訂單等關聯性繪製了 ERD，並建立完整的 Schema。這確保了在遇到多位使用者同時劃位時，資料庫結構能支撐複雜的查詢與寫入。
+        </p>
         <div class="content-img-wrapper">
             <div class="img-row">
-                <img src="images/System.png" alt="系統畫面">
-                <img src="images/database.png" alt="資料庫實作">
+                <img src="images/movie-erd.png" alt="ERD">
+                <img src="images/movie-schema.png" alt="Schema">
             </div>
-            <div class="img-caption">▲ 實際系統介面與後端資料庫畫面</div>
+            <div class="img-caption">▲ 資料庫關聯圖 (ERD) 與綱要設計 (Schema)</div>
         </div>
 
+        <div class="subtitle">2. 全端網頁開發與 UI 實作</div>
+        <p>
+            <strong>前端部分：</strong>我運用 HTML 搭建語意化架構，並親自用 CSS 設計了直覺的電影瀏覽介面，特別是「視覺化的座位選取」功能，讓使用者體驗更順暢。<br>
+            <strong>後端部分：</strong>導入 PHP 處理核心商業邏輯，包含會員登入驗證、動態場次查詢、購物車狀態管理，以及最後的訂單寫入 (CRUD) 操作。
+        </p>
+        <div class="content-img-wrapper">
+            <div class="img-row">
+                <img src="images/movie-ui.png" alt="網頁畫面">
+                <img src="images/movie-db-fetch.png" alt="資料庫串接畫面">
+            </div>
+            <div class="img-caption">▲ 前端 UI 介面實作與後端資料庫串接成果</div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modal-3" onclick="closeOnOutsideClick(event, 'modal-3')">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-3')">×</span>
+        <h2>學生憂鬱症成因分析與預測模型</h2>
+        
+        <p>這是一項結合 Kaggle 競賽數據的資料探勘實務專案。全程使用 Python 開發，並大量運用 Scikit-learn 等機器學習套件。</p>
+        <div class="content-img-wrapper">
+            <img src="images/kaggle.png" alt="Kaggle 數據源">
+            <div class="img-caption">▲ 採用 Kaggle 競賽數據集進行實作</div>
+        </div>
+
+        <div class="subtitle">1. 預處理與特徵選取：找出真正的訊號</div>
+        <div class="quote-box">
+            「在這個專案中，我認為最關鍵的不是直接套用模型，而是前期的特徵工程。在完成資料預處理後，我運用了 Information Gain 和 Gain Ratio 來量化每個屬性對結果的影響力。這就像是在龐雜的數據中，精準篩選出真正的『訊號』，排除掉不相關的雜訊。」
+        </div>
+        <div class="content-img-wrapper">
+            <div class="img-row">
+                <img src="images/feature-1.png" alt="特徵選取 1">
+                <img src="images/feature-2.png" alt="特徵選取 2">
+            </div>
+            <div class="img-caption">▲ Information Gain 與 Gain Ratio 演算法特徵評估結果</div>
+        </div>
+
+        <div class="subtitle">2. 多模型實作與效能對標</div>
+        <p>我建構了 5 種機器學習模型：貝氏分類器 (Naive Bayes)、KNN、SVM、隨機森林 (Random Forest) 以及 XGBoost。在評估模型表現時，我設計了一套非常嚴謹的機制：</p>
+        
+        <ul>
+            <li><strong>混淆矩陣分析：</strong>我絕對不會只看「準確率 (Accuracy)」。我知道預測錯誤的代價是不同的 —— 就像在 IMC 的交易策略中，「錯過一次賺錢機會 (偽陰性)」跟「執行了一次賠錢交易 (偽陽性)」，兩者對公司的影響完全不同。混淆矩陣讓我能清楚掌握模型到底犯了哪種錯。</li>
+            <li><strong>ROC 曲線比較：</strong>驗證模型是否真的具備區分訊號的能力，而不是剛好在某個閾值下賽中。</li>
+            <li><strong>交叉驗證 (Cross-Validation)：</strong>最後一步，所有模型我都經過了交叉驗證。這確保了最終選出的 XGBoost 不是處於過擬合狀態，而是具備極高的穩定性。</li>
+        </ul>
+        <p style="color: #d84b4b; font-weight: bold;">
+            我相信這種對於「防範過擬合」與「嚴謹驗證」的堅持，正是在開發高頻交易模型時最不可或缺的態度。
+        </p>
+    </div>
+</div>
+
+<div class="modal" id="modal-4" onclick="closeOnOutsideClick(event, 'modal-4')">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-4')">×</span>
+        <h2>AWS 雲端自動化設備維護與監控系統</h2>
+        
+        <p>我的第四個專案是利用 AWS 打造的設備維護管理系統。這個專案展現了我從「實體基礎設施」到「無伺服器 (Serverless) 架構」的整合能力。</p>
+        <div class="content-img-wrapper">
+            <img src="images/aws-architecture.png" alt="AWS 架構圖">
+            <div class="img-caption">▲ AWS 系統整體架構圖</div>
+        </div>
+
+        <div class="subtitle">1. 雲端基礎設施部署與資安控管</div>
+        <p>
+            首先，我配置了一台 Ubuntu 的 EC2 作為網頁伺服器，並開通 RDS 作為底層資料庫。為了確保架構安全，我在本機端設定資料庫 Schema 時，<strong>嚴格控管了 RDS 的 Security Group，只允許特定 IP 進行連線操作</strong>，確保資料不外洩。
+        </p>
+        <div class="content-img-wrapper">
+            <div class="img-row">
+                <img src="images/aws-ec2.png" alt="EC2 部署">
+                <img src="images/aws-rds.png" alt="RDS 設定">
+            </div>
+            <div class="img-caption">▲ EC2 伺服器部署與 RDS 安全群組 (Security Group) 設定</div>
+        </div>
+
+        <div class="subtitle">2. 無伺服器自動化排程監控 (Serverless)</div>
+        <p>
+            基礎架構建置好後，我將重點放在「自動化監控」上。我導入了 AWS EventBridge 取代傳統的主機排程器。
+            當時間觸發時，系統會自動啟動 Lambda 函數去 RDS 掃描設備的維護期限，一旦發現即將到期，就會透過 SNS 主動發送 Email/簡訊告警，達成完全不需要人工介入的自動化維運。
+        </p>
+        <div class="content-img-wrapper">
+            <div class="img-row">
+                <img src="images/aws-eventbridge.png" alt="EventBridge">
+                <img src="images/aws-lambda.png" alt="Lambda">
+            </div>
+            <div class="img-caption">▲ 運用 EventBridge 觸發 Lambda 進行 Serverless 自動化排程</div>
+        </div>
     </div>
 </div>
 
 <script>
-    const modal = document.getElementById("modal");
-
-    function openModal() {
-        modal.style.display = "flex";
-        setTimeout(() => {
-            modal.classList.add("show");
-        }, 10);
-        document.body.style.overflow = "hidden"; // 防止背景滾動
+    // 升級版的 Modal 控制器，可接收特定的 modal ID
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if(modal) {
+            modal.style.display = "flex";
+            setTimeout(() => {
+                modal.classList.add("show");
+            }, 10);
+            document.body.style.overflow = "hidden"; // 防止背景滾動
+        }
     }
 
-    function closeModal() {
-        modal.classList.remove("show");
-        setTimeout(() => {
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
-        }, 300);
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if(modal) {
+            modal.classList.remove("show");
+            setTimeout(() => {
+                modal.style.display = "none";
+                // 檢查是否還有其他開啟的 modal，若無則恢復背景滾動
+                if(document.querySelectorAll('.modal.show').length === 0){
+                    document.body.style.overflow = "auto";
+                }
+            }, 300);
+        }
     }
 
-    // 點擊 Modal 背景時自動關閉
-    function closeOnOutsideClick(event) {
-        const modalContent = document.getElementById("modal-content");
+    function closeOnOutsideClick(event, modalId) {
+        const modalContent = document.querySelector(`#${modalId} .modal-content`);
+        // 確認點擊的不是內容區塊本身
         if (!modalContent.contains(event.target)) {
-            closeModal();
+            closeModal(modalId);
         }
     }
 </script>
