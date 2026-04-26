@@ -8,7 +8,7 @@
     :root {
         --primary: #FFE0C4;
         --primary-dark: #f5cba7;
-        --secondary: #FFD6E0; /* 柔和粉 */
+        --secondary: #FFD6E0;
         --accent-blue: #E0F7FA;
         --accent-green: #E8F5E9;
         --bg-light: #fafafa;
@@ -126,7 +126,7 @@
     }
 
     .section-title {
-        font-size: 24px;
+        font-size: 22px;
         font-weight: bold;
         margin-top: 0;
         margin-bottom: 20px;
@@ -134,6 +134,47 @@
         align-items: center;
         gap: 10px;
         color: var(--text-main);
+    }
+
+    /* ===== Bullet Points (Presentation Style) ===== */
+    .point-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 20px 0;
+    }
+
+    .point-list li {
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 12px;
+        font-size: 16px;
+        color: var(--text-muted);
+    }
+
+    .point-list li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        top: -2px;
+        font-size: 20px;
+        color: var(--primary-dark);
+        font-weight: bold;
+    }
+
+    .point-list strong {
+        color: var(--text-main);
+    }
+
+    /* ===== Highlight Value Box ===== */
+    .value-box {
+        background: #fff8f2;
+        border-left: 4px solid var(--primary-dark);
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        font-weight: 600;
+        color: #d36e30;
+        margin-top: 16px;
+        font-size: 15px;
     }
 
     /* ===== Tech Stack Tags ===== */
@@ -156,7 +197,7 @@
 
     /* ===== Image Contextual Wrapper ===== */
     .content-img-wrapper {
-        margin: 25px 0;
+        margin: 25px 0 0 0;
         background: #fcfcfc;
         border: 1px solid #eee;
         border-radius: 16px;
@@ -196,14 +237,14 @@
         margin-top: 15px;
     }
 
-    /* ===== CI/CD Pipeline Visual (Light Theme) ===== */
+    /* ===== CI/CD Pipeline Visual ===== */
     .pipeline {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-top: 25px;
         padding: 30px 20px;
-        background: #fff8f2; /* 淡淡的奶茶底色 */
+        background: #fff8f2;
         border-radius: 16px;
         border: 1px dashed var(--primary-dark);
         overflow-x: auto;
@@ -251,11 +292,12 @@
         background: #fff;
         border: 1px solid #eee;
         border-radius: 20px;
-        padding: 24px;
+        padding: 20px;
         display: flex;
         flex-direction: column;
         box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         transition: 0.3s;
+        align-items: flex-start;
     }
 
     .bento-box:hover {
@@ -265,7 +307,6 @@
         box-shadow: 0 8px 20px rgba(0,0,0,0.06);
     }
 
-    /* 給不同方塊配點柔和的底色 */
     .bento-box:nth-child(1) .bento-icon { background: var(--secondary); }
     .bento-box:nth-child(2) .bento-icon { background: var(--accent-blue); }
     .bento-box:nth-child(3) .bento-icon { background: var(--primary); }
@@ -273,27 +314,27 @@
     .bento-box:nth-child(5) .bento-icon { background: #FFF3E0; }
 
     .bento-icon {
-        width: 45px;
-        height: 45px;
-        border-radius: 12px;
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 22px;
-        margin-bottom: 16px;
+        font-size: 20px;
+        margin-bottom: 12px;
     }
 
     .bento-title {
-        font-size: 17px;
+        font-size: 16px;
         font-weight: bold;
         color: var(--text-main);
-        margin-bottom: 8px;
+        margin-bottom: 6px;
     }
 
     .bento-desc {
         font-size: 14px;
         color: var(--text-muted);
-        line-height: 1.6;
+        line-height: 1.5;
     }
 
     /* Animations */
@@ -325,7 +366,7 @@
     
     <div class="hero">
         <div class="badge-tsmc">TSMC F12p7</div>
-        <h1>AI / Data Internship</h1>
+        <h1>Full-Stack Web Developer Intern</h1>
         <p>BSID-FLSD 企業網頁自動化與全端開發</p>
         <div class="meta-info">
             <span>📍 竹科 (Hsinchu Science Park)</span>
@@ -334,37 +375,62 @@
     </div>
 
     <div class="card" style="animation: fadeIn 0.8s ease 0.1s both;">
-        <h2 class="section-title">⚡ 企業網頁自動化與全端開發</h2>
+        <h2 class="section-title">⚡ 1. 自動化全端系統開發</h2>
         <div class="tech-tags">
-            <span class="tag">React</span>
+            <span class="tag">React (Hook/Context)</span>
             <span class="tag">Node.js</span>
-            <span class="tag">Full-Stack</span>
+            <span class="tag">Dynamic Rendering</span>
         </div>
-        <p>
-            在實習期間，我負責開發企業內部的網頁自動化系統。主要運用 React 和 Node.js，建立一套可以共用的元件庫跟腳本。這個系統的目標很明確：<strong>幫前端工程師省下重複開發的時間，讓整個研發團隊的效率變好</strong>。
-        </p>
-        <p>
-            對我來說，這份工作不只是單純寫程式，很大一部分是在學習怎麼去梳理大公司裡面複雜的業務流程，然後把它們轉換成實際的系統架構。
-        </p>
         
+        <ul class="point-list">
+            <li><strong>動態系統架構：</strong> 開發高度可配置的 Trigger 自動化系統，依據 Metadata 達成「動態渲染」，取代手動建置頁面。</li>
+            <li><strong>即時狀態同步：</strong> 緊密整合前後端 API，確保前端操作與後端資料庫的即時一致性。</li>
+        </ul>
+        
+        <div class="value-box">
+            💡 專案成效：系統成功上線，預期降低團隊開發重複性介面 約 30% 成本。
+        </div>
+
         <div class="content-img-wrapper">
             <div class="img-grid">
                 <div class="img-wrapper">
-                    <img src="images/system-diagram-1.png">
+                    <img src="images/system-diagram-1.png" alt="系統架構 1">
                 </div>
                 <div class="img-wrapper">
-                    <img src="images/system-diagram-2.png">
+                    <img src="images/system-diagram-2.png" alt="系統架構 2">
                 </div>
             </div>
-            <div class="img-caption">▲ 系統畫面</div>
+            <div class="img-caption">▲ Trigger 系統動態渲染畫面</div>
         </div>
     </div>
 
+    <div class="card" style="animation: fadeIn 0.8s ease 0.15s both;">
+        <h2 class="section-title">🗄️ 2. 資料庫設計與安全性優化</h2>
+        <div class="tech-tags">
+            <span class="tag">MariaDB</span>
+            <span class="tag">TSMC SSO</span>
+            <span class="tag">RBAC</span>
+        </div>
+        
+        <ul class="point-list" style="margin-bottom: 0;">
+            <li><strong>關聯圖與效能優化：</strong> 使用 MariaDB 設計 ER Diagram，針對複雜的 Trigger 觸發邏輯優化資料表索引，提升寫入效能。</li>
+            <li><strong>嚴謹的權限控管：</strong> 深度整合 TSMC SSO 驗證，並基於 RBAC (Role-based Access Control) 確保敏感自動化功能的存取安全。</li>
+        </ul>
+    </div>
+
     <div class="card" style="animation: fadeIn 0.8s ease 0.2s both;">
-        <h2 class="section-title">🚀 實作 CI/CD 自動化佈署流程</h2>
-        <p>
-            除了寫全端網頁，我也參與了系統的持續整合與佈署（CI/CD）流程。我把開發好的系統從本機端 (Local)，透過 Docker 打包成容器，並結合 Git 和 ArgoCD，最後穩穩地把它佈署到 K8s 的測試環境裡。這讓我對現代化的基礎設施有了很實務的了解。
-        </p>
+        <h2 class="section-title">🚀 3. DevOps 雲端維運實務</h2>
+        <div class="tech-tags">
+            <span class="tag">Docker</span>
+            <span class="tag">Kubernetes (K8s)</span>
+            <span class="tag">CI/CD Pipeline</span>
+        </div>
+
+        <ul class="point-list">
+            <li><strong>容器化與編排：</strong> 獨立撰寫 Dockerfile 封裝應用，配置 K8s YAML (Deployment, Service, Ingress)。</li>
+            <li><strong>消弭環境差異：</strong> 透過 Pod 路由與資源限制，解決 Local 與 Production 環境差異，確保高可用性。</li>
+            <li><strong>自動化防護網：</strong> 參與 CI/CD 建置，導入自動化測試與掃描，有效過濾上線前風險。</li>
+        </ul>
         
         <div class="pipeline">
             <div class="node">
@@ -389,37 +455,37 @@
             <div class="line"></div>
             <div class="node">
                 <div class="icon-box" style="border-color: #326ce5; color:#326ce5">K8s</div>
-                <span style="font-size:13px; color:var(--text-muted)">Test 環境</span>
+                <span style="font-size:13px; color:var(--text-muted)">Prod 環境</span>
             </div>
         </div>
     </div>
 
-    <h2 class="section-title" style="margin-top: 40px; margin-bottom: 20px; animation: fadeIn 0.8s ease 0.3s both;">💡 實習學到的事</h2>
+    <h2 class="section-title" style="margin-top: 40px; margin-bottom: 20px; animation: fadeIn 0.8s ease 0.3s both;">💡 實習學到的事 (Soft Skills)</h2>
     <div class="bento-grid" style="animation: fadeIn 0.8s ease 0.4s both;">
         <div class="bento-box">
             <div class="bento-icon">🤝</div>
-            <div class="bento-title">團隊相處</div>
-            <div class="bento-desc">學會怎麼跟不同部門的大大們溝通，並且適應企業級的敏捷開發步調。</div>
+            <div class="bento-title">跨部門協作</div>
+            <div class="bento-desc">與不同單位溝通</div>
         </div>
         <div class="bento-box">
             <div class="bento-icon">🎯</div>
-            <div class="bento-title">準確理解需求</div>
-            <div class="bento-desc">把一開始聽起來有點模糊的業務需求，一步步釐清並轉成能寫扣的技術規格。</div>
+            <div class="bento-title">理解需求</div>
+            <div class="bento-desc">理解上司的需求，且一步一步的完成</div>
         </div>
         <div class="bento-box">
             <div class="bento-icon">🙋‍♀️</div>
-            <div class="bento-title">勇敢發問</div>
-            <div class="bento-desc">遇到盲點不再自己死磕，學會先整理好問題，再去找資深前輩尋求指引。</div>
+            <div class="bento-title">尋求指引</div>
+            <div class="bento-desc">遇到盲點先整理問題，再有效率的向同事請教</div>
         </div>
         <div class="bento-box" style="grid-column: span 2;">
             <div class="bento-icon">🧗‍♀️</div>
-            <div class="bento-title">困難克服與除錯</div>
-            <div class="bento-desc">要在龐大的企業架構裡面找 Bug 真的很不容易。我慢慢學會怎麼冷靜地看 Log，從裡面一層層追蹤問題的根源，最後順利提出解決方案。</div>
+            <div class="bento-title">困難克服</div>
+            <div class="bento-desc">遇到困難時，勇於嘗試及挑戰</div>
         </div>
         <div class="bento-box">
             <div class="bento-icon">🌱</div>
             <div class="bento-title">接觸新事物</div>
-            <div class="bento-desc">碰到了很多以前沒摸過的技術，像是 K8s 跟 ArgoCD，邊做邊學收穫很大。</div>
+            <div class="bento-desc">處理沒遇過的事情時，勇於嘗試與挑戰</div>
         </div>
     </div>
 
