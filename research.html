@@ -206,29 +206,51 @@
         flex-wrap: wrap;
     }
 
+    /* 新增：帶標籤的圖片容器樣式 */
     .img-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* 讓標籤跟圖片置中 */
+        position: relative;
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         flex: 1;
-        min-width: 300px;
+        min-width: 250px; /* 稍微縮小最小寬度以容納三張圖 */
+        background: #fff;
+        padding: 15px;
+        border: 1px solid #f0f0f0;
+        transition: transform 0.3s ease;
     }
 
     .img-wrapper img {
         width: 100%;
         height: auto;
         display: block;
-        transition: transform 0.3s ease;
+        margin-top: 15px; /* 給標籤留空間 */
+        border-radius: 8px;
+        object-fit: contain;
     }
 
-    .img-wrapper:hover img {
+    .img-wrapper:hover {
         transform: scale(1.02);
+    }
+
+    /* 圖片上方的提示標籤 */
+    .img-tag {
+        display: inline-block;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
     .img-caption {
         font-size: 14px;
         color: #888;
-        margin-top: 15px;
+        margin-top: 20px;
     }
 
     /* Animations */
@@ -271,9 +293,9 @@
         </div>
         
         <ul class="point-list">
-            <li><strong>專案目標：</strong> 結合生成式 AI 聊天機器人與 Unity 開發引擎，打造具備高度互動性與商業潛力的彰化旅遊導覽系統。</li>
-            <li><strong>專案管理與協作：</strong> 擔任總召帶領 5 人開發團隊，主導從前期需求訪談、技術架構規劃，到最終全端系統落地的完整開發生命週期。</li>
-            <li><strong>技術商業化：</strong> 成功將前瞻技術與實際商業模式結合，有效解決在地文化推廣痛點，證明專案具備落地營運的潛力。</li>
+            <li><strong>專案目標：</strong> 結合生成式 AI 聊天機器人與 Unity 開發引擎，打造具高度互動性與商業潛力的彰化旅遊導覽系統。</li>
+            <li><strong>專案管理與協作：</strong> 擔任總召帶領 5 人團隊，主導從前期需求訪談、技術架構規劃，到最終全端系統落地的完整生命週期。</li>
+            <li><strong>技術商業化：</strong> 成功將前瞻技術與實際商業模式結合，有效解決在地推廣痛點，證明專案具備落地營運潛力。</li>
         </ul>
 
         <div class="value-box award">
@@ -282,12 +304,12 @@
         </div>
 
         <div class="content-img-wrapper">
-            <div class="img-grid">
-                <div class="img-wrapper">
-                    <img src="images/app-ui-unity.png" alt="App 介面與 Unity 場景">
+            <div class="img-grid" style="align-items: flex-start;">
+                <div class="img-wrapper" style="padding:0; border:none; box-shadow: none; background: transparent;">
+                    <img src="images/app-ui-unity.png" alt="App 介面與 Unity 場景" style="margin:0;">
                 </div>
-                <div class="img-wrapper">
-                    <img src="images/award-photo.png" alt="團隊獲獎合照">
+                <div class="img-wrapper" style="padding:0; border:none; box-shadow: none; background: transparent;">
+                    <img src="images/award-photo.png" alt="團隊獲獎合照" style="margin:0;">
                 </div>
             </div>
             <div class="img-caption">▲ App 互動介面展示與團隊獲獎紀錄</div>
@@ -305,21 +327,24 @@
         </div>
         
         <ul class="point-list">
-            <li><strong>研究背景：</strong> 探討醫療 AI 輔助診斷系統，面對極微小擾動（單像素攻擊 One-Pixel Attack）時的脆弱性與資安風險。</li>
-            <li><strong>核心防禦機制 (SADI-Def)：</strong> 研發輕量且高保真的防禦框架。結合<strong>「頻域高通濾波」</strong>精準定位受攻擊的空間像素，並運用<strong>「擴散模型 (Diffusion Inpainting)」</strong>進行局部修復。</li>
-            <li><strong>臨床語意保留：</strong> 確保在濾除惡意干擾雜訊的同時，完整保留醫療影像的病徵語意，維持 AI 診斷的準確度與可信賴度。</li>
+            <li><strong>研究背景：</strong> 探討醫療 AI 系統面對極微小擾動（如單像素攻擊 One-Pixel Attack）時的脆弱性與資安風險。</li>
+            <li><strong>核心防禦機制 (SADI-Def)：</strong> 結合<strong>「頻域高通濾波」</strong>精準定位受攻擊空間像素，並運用<strong>「擴散模型 (Diffusion Inpainting)」</strong>進行局部修復。</li>
+            <li><strong>臨床語意保留：</strong> 確保濾除惡意干擾雜訊的同時，完整保留病徵語意，維持 AI 診斷的準確度與可信賴度。</li>
         </ul>
 
         <div class="content-img-wrapper">
             <div class="img-grid">
                 <div class="img-wrapper">
-                    <img src="images/medical-image-restoration1.png">
+                    <span class="img-tag" style="background:#FFE0C4; color:#a66c37;">攻擊圖 (Attack)</span>
+                    <img src="images/medical-image-restoration1.png" alt="攻擊圖">
                 </div>
                 <div class="img-wrapper">
-                    <img src="images/medical-image-restoration2.png" >
+                    <span class="img-tag" style="background:#E0F7FA; color:#2e7d85;">補釘圖 (Patch)</span>
+                    <img src="images/medical-image-restoration2.png" alt="補釘圖">
                 </div>
                 <div class="img-wrapper">
-                    <img src="images/medical-image-restoration3.png" >
+                    <span class="img-tag" style="background:#E8F5E9; color:#2e7d32;">還原圖 (Restore)</span>
+                    <img src="images/medical-image-restoration3.png" alt="還原圖">
                 </div>
             </div>
             <div class="img-caption">▲ SADI-Def 防禦框架影像修復成果對比</div>
