@@ -43,34 +43,77 @@ nav a:hover{
 /* ===== Section ===== */
 .section{
     padding:60px 20px;
-    max-width:1000px;
+    max-width:1100px;
     margin:auto;
 }
 
 /* ===== 標題 ===== */
 .title{
-    font-size:28px;
-    margin-bottom:20px;
+    font-size:32px;
+    margin-bottom:30px;
 }
 
 /* ===== 卡片 ===== */
 .card{
+    display:flex;
+    gap:30px;
+    align-items:center;
     background:#fff;
-    padding:25px;
-    border-radius:14px;
-    margin:20px 0;
+    padding:30px;
+    border-radius:16px;
+    margin:30px 0;
     border-left:6px solid var(--primary);
-    transition:.3s;
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 0.8s ease;
+}
+
+/* 入場動畫 */
+.card.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
 .card:hover{
-    transform:translateY(-6px);
+    transform:translateY(-8px);
     background:#fff8f2;
 }
 
-/* ===== 學校標題 ===== */
+/* 左右區塊 */
+.text{
+    flex:1;
+}
+
+.image{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+/* 圖片 */
+.image img{
+    width:260px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    animation:float 4s ease-in-out infinite;
+    transition:.3s;
+}
+
+/* hover 更吸睛 */
+.image img:hover{
+    transform:scale(1.08) rotate(1deg);
+}
+
+/* 漂浮動畫（呼吸感） */
+@keyframes float{
+    0%{ transform:translateY(0px);}
+    50%{ transform:translateY(-12px);}
+    100%{ transform:translateY(0px);}
+}
+
+/* ===== 文字 ===== */
 .school{
-    font-size:20px;
+    font-size:22px;
     font-weight:bold;
 }
 
@@ -79,13 +122,11 @@ nav a:hover{
     margin-bottom:10px;
 }
 
-/* ===== 小標 ===== */
 .subtitle{
     margin-top:15px;
     font-weight:bold;
 }
 
-/* ===== list ===== */
 ul{
     padding-left:20px;
     margin:5px 0;
@@ -95,13 +136,18 @@ li{
     margin:4px 0;
 }
 
-/* ===== GPA highlight ===== */
 .gpa{
     margin-top:10px;
     font-weight:bold;
     color:#d35400;
 }
 
+/* RWD */
+@media(max-width:768px){
+    .card{
+        flex-direction:column;
+    }
+}
 </style>
 </head>
 
@@ -109,7 +155,6 @@ li{
 
 <nav>
 <a href="index.html">Home</a>
-<a href="about.html">About</a>
 <a href="education.html">Education</a>
 <a href="courses.html">Courses</a>
 <a href="projects.html">Projects</a>
@@ -124,12 +169,14 @@ li{
 
 <!-- 碩士 -->
 <div class="card">
+<div class="text">
+
 <div class="school">國立陽明交通大學 資訊管理研究所</div>
 <div class="meta">2024/09 - Now ｜ 商務多媒體實驗室（指導教授：蔡銘箴）</div>
 
 <div class="subtitle">學術成就</div>
 <ul>
-<li>113、114學年度 張俊彥校長紀念獎學金</li>
+<li>張俊彥校長紀念獎學金</li>
 </ul>
 
 <div class="subtitle">研究領域</div>
@@ -139,14 +186,22 @@ li{
 
 <div class="subtitle">參與計畫</div>
 <ul>
-<li>國科會 AI 正念飲食 App 計畫（成大電機 × 交大資管 × 營養師）</li>
+<li>國科會 AI 正念飲食 App 計畫</li>
 </ul>
 
 <div class="gpa">GPA: 4.28 / 4.3</div>
+
+</div>
+
+<div class="image">
+<img src="images/lab.png">
+</div>
 </div>
 
 <!-- 學士 -->
 <div class="card">
+<div class="text">
+
 <div class="school">國立彰化師範大學 資訊管理學系</div>
 <div class="meta">2020/09 - 2024/01</div>
 
@@ -158,16 +213,36 @@ li{
 
 <div class="subtitle">專題</div>
 <ul>
-<li>具備情境感知能力之生成式 AI 在地遊程系統</li>
-<li>擔任專題組長</li>
-<li>榮獲 CULTECH「Acer 企業獎」</li>
-<li>獲選「國泰卓越獎助計畫」</li>
+<li>生成式 AI 在地遊程系統（組長）</li>
+<li>Acer 企業獎</li>
+<li>國泰卓越獎助計畫</li>
 </ul>
 
 <div class="gpa">GPA: 3.9 / 4.0</div>
+
+</div>
+
+<div class="image">
+<img src="images/school.png">
+</div>
 </div>
 
 </div>
+
+<script>
+// scroll 入場動畫
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+},{ threshold:0.2 });
+
+cards.forEach(card => observer.observe(card));
+</script>
 
 </body>
 </html>
