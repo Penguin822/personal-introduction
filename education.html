@@ -6,8 +6,10 @@
 
 <style>
 :root{
-    --primary:#FFE0C4;
-    --primary-dark:#f5cba7;
+    --pink:#FFD6E0;
+    --pink-dark:#FFB6C1;
+    --orange:#FFE0C4;
+    --orange-dark:#f5cba7;
     --text:#2b2b2b;
 }
 
@@ -22,7 +24,7 @@ body{
 nav{
     position:sticky;
     top:0;
-    background:var(--primary);
+    background:var(--pink);
     display:flex;
     justify-content:center;
     gap:18px;
@@ -36,7 +38,7 @@ nav a{
     transition:.3s;
 }
 nav a:hover{
-    background:var(--primary-dark);
+    background:var(--orange);
     transform:translateY(-2px);
 }
 
@@ -57,11 +59,11 @@ nav a:hover{
     display:flex;
     gap:30px;
     align-items:center;
-    background:#FFE0C4;
+    background:var(--pink);
     padding:30px;
     border-radius:16px;
     margin:30px 0;
-    border-left:6px solid var(--primary);
+    border-left:6px solid var(--pink-dark);
 
     opacity:0;
     transform:translateY(80px) scale(0.95);
@@ -78,7 +80,8 @@ nav a:hover{
 
 /* ===== Hover ===== */
 .card:hover{
-    background:#FFE6D9;
+    background:var(--orange);
+    border-left:6px solid var(--orange-dark);
     box-shadow:0 20px 50px rgba(0,0,0,0.15);
 }
 
@@ -102,12 +105,10 @@ nav a:hover{
     transition:transform 0.6s ease;
 }
 
-/* hover 圖片 */
 .image img:hover{
     transform:scale(1.08) rotate(1deg);
 }
 
-/* 漂浮動畫 */
 @keyframes float{
     0%{ transform:translateY(0px);}
     50%{ transform:translateY(-12px);}
@@ -145,7 +146,7 @@ li{
     color:#d35400;
 }
 
-/* ===== 文字動畫（逐行出現）===== */
+/* ===== 文字動畫 ===== */
 .text > *{
     opacity:0;
     transform:translateY(20px);
@@ -198,7 +199,7 @@ li{
 
 <div class="subtitle">學術成就</div>
 <ul>
-<li>113、114學年度[張俊彥校長紀念獎學金]</li>
+<li>113、114學年度 張俊彥校長紀念獎學金</li>
 </ul>
 
 <div class="subtitle">研究領域</div>
@@ -265,8 +266,7 @@ const observer = new IntersectionObserver(entries => {
 
 cards.forEach(card => observer.observe(card));
 
-
-// ===== Apple 滑鼠 3D 傾斜 =====
+// ===== Apple 3D 傾斜 =====
 document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();

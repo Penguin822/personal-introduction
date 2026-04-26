@@ -2,134 +2,266 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<title>Projects</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects Portfolio</title>
 <style>
-:root{
-    --primary:#FFE0C4;
-    --primary-dark:#f5cba7;
-    --text:#2b2b2b;
-}
+    :root {
+        --bg-dark: #0a0a0c;
+        --bg-card: #161618;
+        --bg-hover: #1f1f22;
+        --primary-glow: rgba(99, 102, 241, 0.15);
+        --accent: #818cf8;
+        --text-main: #f3f4f6;
+        --text-muted: #9ca3af;
+        --border-color: rgba(255, 255, 255, 0.08);
+        --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
 
-body{
-    margin:0;
-    font-family:"Segoe UI", sans-serif;
-}
+    body {
+        margin: 0;
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        font-family: var(--font-stack);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
 
-/* ===== Navbar ===== */
-nav{
-    position:sticky;
-    top:0;
-    background:var(--primary);
-    display:flex;
-    justify-content:center;
-    gap:18px;
-    padding:14px;
-}
-nav a{
-    text-decoration:none;
-    color:#333;
-    padding:8px 12px;
-    border-radius:8px;
-}
-nav a:hover{
-    background:var(--primary-dark);
-}
+    /* ===== Navbar (Glassmorphism) ===== */
+    nav {
+        position: sticky;
+        top: 0;
+        background: rgba(10, 10, 12, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        padding: 16px;
+        z-index: 100;
+    }
 
-/* ===== Section ===== */
-.section{
-    padding:60px 20px;
-    max-width:1100px;
-    margin:auto;
-}
+    nav a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-weight: 500;
+        font-size: 15px;
+        transition: color 0.3s ease;
+        letter-spacing: 0.5px;
+    }
 
-.title{
-    font-size:28px;
-    margin-bottom:30px;
-}
+    nav a:hover, nav a.active {
+        color: var(--text-main);
+    }
 
-/* ===== Card ===== */
-.card{
-    background:#fff;
-    padding:25px;
-    border-radius:14px;
-    margin-bottom:25px;
-    border-left:6px solid var(--primary);
-    cursor:pointer;
-    transition:.3s;
-}
-.card:hover{
-    transform:translateY(-6px);
-    background:#fff8f2;
-}
+    /* ===== Main Container ===== */
+    .section {
+        padding: 80px 24px;
+        max-width: 1000px;
+        margin: auto;
+    }
 
-.project-title{
-    font-size:20px;
-    font-weight:bold;
-}
+    .title {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 40px;
+        letter-spacing: -0.5px;
+        background: linear-gradient(to right, #fff, #a5b4fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 
-.meta{
-    color:#666;
-}
+    /* ===== Project Card ===== */
+    .card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        padding: 32px;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
 
-/* ===== MODAL ===== */
-.modal{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.6);
-    display:none;
-    justify-content:center;
-    align-items:center;
-}
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--accent);
+        opacity: 0.8;
+    }
 
-.modal-content{
-    background:#fff;
-    width:90%;
-    max-width:1000px;
-    height:90%;
-    overflow:auto;
-    border-radius:16px;
-    padding:30px;
-    animation:fadeIn 0.5s ease;
-}
+    .card:hover {
+        transform: translateY(-4px);
+        background: var(--bg-hover);
+        border-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 20px 40px var(--primary-glow);
+    }
 
-@keyframes fadeIn{
-    from{opacity:0; transform:scale(0.9);}
-    to{opacity:1; transform:scale(1);}
-}
+    .project-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
 
-.close{
-    float:right;
-    cursor:pointer;
-    font-size:20px;
-}
+    .meta {
+        color: var(--text-muted);
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
 
-/* ===== Images ===== */
-.img-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:15px;
-    margin-top:20px;
-}
+    .badge {
+        background: rgba(129, 140, 248, 0.1);
+        color: var(--accent);
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
 
-.img-grid img{
-    width:100%;
-    border-radius:10px;
-    transition:.3s;
-}
-.img-grid img:hover{
-    transform:scale(1.05);
-}
+    /* ===== MODAL ===== */
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
 
-/* ===== Section Title ===== */
-.subtitle{
-    margin-top:20px;
-    font-weight:bold;
-    font-size:18px;
-}
+    .modal.show {
+        display: flex;
+        opacity: 1;
+    }
+
+    .modal-content {
+        background: var(--bg-dark);
+        border: 1px solid var(--border-color);
+        width: 90%;
+        max-width: 900px;
+        max-height: 85vh;
+        overflow-y: auto;
+        border-radius: 20px;
+        padding: 48px;
+        position: relative;
+        transform: translateY(20px);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal.show .modal-content {
+        transform: translateY(0);
+    }
+
+    /* Scrollbar for Modal */
+    .modal-content::-webkit-scrollbar { width: 8px; }
+    .modal-content::-webkit-scrollbar-track { background: transparent; }
+    .modal-content::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+    .modal-content::-webkit-scrollbar-thumb:hover { background: #555; }
+
+    .close {
+        position: absolute;
+        top: 24px;
+        right: 32px;
+        color: var(--text-muted);
+        font-size: 28px;
+        cursor: pointer;
+        transition: color 0.2s ease;
+        line-height: 1;
+    }
+
+    .close:hover {
+        color: #fff;
+    }
+
+    /* ===== Modal Typography & Layout ===== */
+    .modal-content h2 {
+        font-size: 32px;
+        margin-top: 0;
+        margin-bottom: 12px;
+        line-height: 1.2;
+    }
+
+    .subtitle {
+        margin-top: 40px;
+        margin-bottom: 16px;
+        font-weight: 600;
+        font-size: 20px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 8px;
+    }
+
+    .modal-content p, .modal-content li {
+        color: var(--text-muted);
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .modal-content ul {
+        padding-left: 20px;
+    }
+
+    .modal-content li {
+        margin-bottom: 8px;
+    }
+
+    .modal-content strong {
+        color: var(--accent);
+        font-weight: 600;
+    }
+
+    /* ===== Images Grid ===== */
+    .img-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+        margin-top: 24px;
+    }
+
+    .img-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        overflow: hidden;
+        padding: 12px;
+    }
+
+    .img-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    .img-card:hover img {
+        transform: scale(1.03);
+    }
+    
+    .img-caption {
+        text-align: center;
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-top: 12px;
+    }
 
 </style>
 </head>
@@ -137,82 +269,120 @@ nav a:hover{
 <body>
 
 <nav>
-<a href="index.html">Home</a>
-<a href="projects.html">Projects</a>
+    <a href="index.html">Overview</a>
+    <a href="projects.html" class="active">Architecture & Projects</a>
 </nav>
 
 <div class="section">
+    <div class="title">Technical Portfolio</div>
 
-<div class="title">🚀 Projects</div>
-
-<!-- Project 1 -->
-<div class="card" onclick="openModal()">
-<div class="project-title">Enterprise Inventory Management System</div>
-<div class="meta">👉 點擊查看完整專案（面試重點）</div>
+    <div class="card" onclick="openModal()">
+        <div class="project-title">Enterprise Inventory Management System</div>
+        <div class="meta">
+            <span class="badge">System Architecture</span>
+            <span class="badge">Database Design</span>
+            <span>Click to view system details ➔</span>
+        </div>
+    </div>
 </div>
 
-</div>
+<div class="modal" id="modal" onclick="closeOnOutsideClick(event)">
+    <div class="modal-content" id="modal-content">
+        <span class="close" onclick="closeModal()">×</span>
 
-<!-- ===== MODAL ===== -->
-<div class="modal" id="modal">
-<div class="modal-content">
+        <h2>Enterprise Inventory Management System</h2>
+        <div class="meta" style="margin-bottom: 32px;">
+            <span class="badge">End-to-End Development</span>
+            <span class="badge">Lazarus IDE</span>
+        </div>
 
-<span class="close" onclick="closeModal()">✖</span>
+        <div class="subtitle">🎯 Architecture Overview</div>
+        <p>
+            在「靜香鞋類進銷存系統」中，我負責端到端系統開發。此專案最大的亮點在於<strong>前期嚴謹的系統分析與架構設計</strong>，而非單純程式實作。良好的地基是維持系統擴充性與穩健度的關鍵。
+        </p>
 
-<h2>Enterprise Inventory Management System</h2>
+        <div class="subtitle">🧠 System Analysis</div>
+        <p>
+            為了解決零售業中會員、銷貨、庫存與財務四大模組的複雜邏輯，我從需求塑模開始，繪製兩階資料流程圖（DFD），完整定義資料流動與系統行為。
+        </p>
 
-<div class="subtitle">🎯 Project Overview</div>
-<p>
-在「靜香鞋類進銷存系統」中，我負責端到端系統開發。此專案最大的亮點在於<strong>前期嚴謹的系統分析與架構設計</strong>，而非單純程式實作。
-</p>
+        <div class="subtitle">🗂 Database Normalization</div>
+        <p>
+            在資料庫設計中，建立完整 ERD 並進行正規化處理，確保資料的一致性與查詢效能：
+        </p>
+        <ul>
+            <li><strong>解耦與獨立：</strong>將會員資訊從訂單表拆分，避免資料冗餘。</li>
+            <li><strong>關聯性約束：</strong>使用 PK / FK 建立嚴謹關聯，透過「會員編號」串接資料。</li>
+            <li><strong>防呆機制：</strong>從資料庫層級確保訂單與帳務資料一致性，降低後端邏輯錯誤風險。</li>
+        </ul>
 
-<div class="subtitle">🧠 System Analysis（核心亮點）</div>
-<p>
-為了解決零售業中會員、銷貨、庫存與財務四大模組的複雜邏輯，我從需求塑模開始，繪製兩階資料流程圖（DFD），完整定義資料流動與系統行為。
-</p>
+        <div class="subtitle">⚙️ Implementation</div>
+        <ul>
+            <li>使用 Lazarus IDE 快速開發 20+ UI 畫面，實踐快速迭代。</li>
+            <li>專注後端 CRUD 操作與邊界條件的防呆邏輯。</li>
+            <li>完成進銷存模組與財務自動化系統的整合。</li>
+        </ul>
 
-<div class="subtitle">🗂 Database Design（ERD + 正規化）</div>
-<p>
-在資料庫設計中，我建立完整 ERD 並進行正規化：
-</p>
-<ul>
-<li>避免資料冗餘（會員資料獨立）</li>
-<li>使用 PK / FK 建立關聯</li>
-<li>確保訂單與帳務資料一致性</li>
-</ul>
+        <div class="subtitle">📊 System Artifacts</div>
+        
+        <div class="img-grid">
+            <div class="img-card">
+                <img src="images/DFD.png" alt="Data Flow Diagram">
+                <div class="img-caption">Data Flow Diagram (DFD)</div>
+            </div>
+            <div class="img-card">
+                <img src="images/ERD.png" alt="Entity Relationship Diagram">
+                <div class="img-caption">Entity Relationship Diagram</div>
+            </div>
+            <div class="img-card">
+                <img src="images/Normalization.png" alt="Database Normalization">
+                <div class="img-caption">Normalization Process</div>
+            </div>
+            <div class="img-card">
+                <img src="images/datadictionary.png" alt="Data Dictionary">
+                <div class="img-caption">Data Dictionary</div>
+            </div>
+            <div class="img-card">
+                <img src="images/System.png" alt="System UI">
+                <div class="img-caption">System Interface</div>
+            </div>
+            <div class="img-card">
+                <img src="images/database.png" alt="Database Structure">
+                <div class="img-caption">Database Implementation</div>
+            </div>
+        </div>
 
-<p>
-例如：將會員資訊從訂單表拆分，透過「會員編號」建立關聯，大幅降低資料重複與錯誤風險。
-</p>
-
-<div class="subtitle">⚙️ Implementation（實作）</div>
-<ul>
-<li>Lazarus IDE 快速開發 20+ UI 畫面</li>
-<li>專注後端 CRUD 與防呆邏輯</li>
-<li>完成進銷存 + 財務自動化系統</li>
-</ul>
-
-<div class="subtitle">📊 System Artifacts</div>
-
-<div class="img-grid">
-<img src="images/DFD.png">
-<img src="images/ERD.png">
-<img src="images/Normalization.png">
-<img src="images/datadictionary.png">
-<img src="images/System.png">
-<img src="images/database.png">
-</div>
-
-</div>
+    </div>
 </div>
 
 <script>
-function openModal(){
-    document.getElementById("modal").style.display="flex";
-}
-function closeModal(){
-    document.getElementById("modal").style.display="none";
-}
+    const modal = document.getElementById("modal");
+
+    function openModal() {
+        modal.style.display = "flex";
+        // 延遲一點點加入 class 觸發 CSS 動畫
+        setTimeout(() => {
+            modal.classList.add("show");
+        }, 10);
+        document.body.style.overflow = "hidden"; // 防止背景滾動
+    }
+
+    function closeModal() {
+        modal.classList.remove("show");
+        // 等待動畫結束後再隱藏
+        setTimeout(() => {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }, 300);
+    }
+
+    // 點擊 Modal 背景時自動關閉
+    function closeOnOutsideClick(event) {
+        const modalContent = document.getElementById("modal-content");
+        if (!modalContent.contains(event.target)) {
+            closeModal();
+        }
+    }
 </script>
 
 </body>
