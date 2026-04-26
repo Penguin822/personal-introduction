@@ -2,253 +2,304 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<title>Education</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Education | Portfolio</title>
 
 <style>
-:root{
-    --pink:#FFD6E0;
-    --pink-dark:#FFB6C1;
-    --orange:#FFE0C4;
-    --orange-dark:#f5cba7;
-    --text:#2b2b2b;
-}
-
-body{
-    margin:0;
-    font-family:"Segoe UI", sans-serif;
-    background:#fff;
-    color:var(--text);
-}
-
-/* ===== Navbar ===== */
-nav{
-    position:sticky;
-    top:0;
-    background:var(--pink);
-    display:flex;
-    justify-content:center;
-    gap:18px;
-    padding:14px;
-}
-nav a{
-    text-decoration:none;
-    color:#333;
-    padding:8px 12px;
-    border-radius:8px;
-    transition:.3s;
-}
-nav a:hover{
-    background:var(--orange);
-    transform:translateY(-2px);
-}
-
-/* ===== Section ===== */
-.section{
-    padding:60px 20px;
-    max-width:1100px;
-    margin:auto;
-}
-
-.title{
-    font-size:32px;
-    margin-bottom:30px;
-}
-
-/* ===== Card ===== */
-.card{
-    display:flex;
-    gap:30px;
-    align-items:center;
-    background:var(--pink);
-    padding:30px;
-    border-radius:16px;
-    margin:30px 0;
-    border-left:6px solid var(--pink-dark);
-
-    opacity:0;
-    transform:translateY(80px) scale(0.95);
-    transition:all 1s cubic-bezier(0.22, 1, 0.36, 1);
-
-    box-shadow:0 8px 20px rgba(0,0,0,0.05);
-}
-
-/* ===== Scroll 出現 ===== */
-.card.show{
-    opacity:1;
-    transform:translateY(0) scale(1);
-}
-
-/* ===== Hover ===== */
-.card:hover{
-    background:var(--orange);
-    border-left:6px solid var(--orange-dark);
-    box-shadow:0 20px 50px rgba(0,0,0,0.15);
-}
-
-/* ===== 左右區塊 ===== */
-.text{
-    flex:1;
-}
-
-.image{
-    flex:1;
-    display:flex;
-    justify-content:center;
-}
-
-/* ===== 圖片 ===== */
-.image img{
-    width:260px;
-    border-radius:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.1);
-    animation:float 4s ease-in-out infinite;
-    transition:transform 0.6s ease;
-}
-
-.image img:hover{
-    transform:scale(1.08) rotate(1deg);
-}
-
-@keyframes float{
-    0%{ transform:translateY(0px);}
-    50%{ transform:translateY(-12px);}
-    100%{ transform:translateY(0px);}
-}
-
-/* ===== 文字 ===== */
-.school{
-    font-size:22px;
-    font-weight:bold;
-}
-
-.meta{
-    color:#666;
-    margin-bottom:10px;
-}
-
-.subtitle{
-    margin-top:15px;
-    font-weight:bold;
-}
-
-ul{
-    padding-left:20px;
-    margin:5px 0;
-}
-
-li{
-    margin:4px 0;
-}
-
-.gpa{
-    margin-top:10px;
-    font-weight:bold;
-    color:#d35400;
-}
-
-/* ===== 文字動畫 ===== */
-.text > *{
-    opacity:0;
-    transform:translateY(20px);
-    transition:all 0.6s ease;
-}
-
-.card.show .text > *:nth-child(1){transition-delay:0.1s;}
-.card.show .text > *:nth-child(2){transition-delay:0.2s;}
-.card.show .text > *:nth-child(3){transition-delay:0.3s;}
-.card.show .text > *:nth-child(4){transition-delay:0.4s;}
-.card.show .text > *:nth-child(5){transition-delay:0.5s;}
-.card.show .text > *:nth-child(6){transition-delay:0.6s;}
-
-.card.show .text > *{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* ===== RWD ===== */
-@media(max-width:768px){
-    .card{
-        flex-direction:column;
+    :root {
+        --primary: #FFE0C4;
+        --primary-dark: #f5cba7;
+        --secondary: #FFD6E0; /* 柔和粉，可做點綴 */
+        --bg-light: #fafafa;
+        --text-main: #2b2b2b;
+        --text-muted: #666666;
+        --accent-orange: #d36e30; /* 用於強調 GPA 等亮點 */
+        --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
     }
-}
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background-color: var(--bg-light);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== Navbar ===== */
+    nav {
+        position: sticky;
+        top: 0;
+        background: var(--primary);
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        padding: 14px;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+    }
+
+    /* ===== Section ===== */
+    .section {
+        padding: 60px 24px;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .title {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 40px;
+        color: var(--text-main);
+    }
+
+    /* ===== Card ===== */
+    .card {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        background: #fff;
+        padding: 40px;
+        border-radius: 20px;
+        margin: 30px 0;
+        border-left: 6px solid var(--primary-dark);
+        border-top: 1px solid #f0f0f0;
+        border-right: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f0f0f0;
+
+        opacity: 0;
+        transform: translateY(60px) scale(0.98);
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        box-shadow: var(--shadow-soft);
+        
+        /* 為了 3D 效果設定視角 */
+        perspective: 1000px;
+        transform-style: preserve-3d;
+    }
+
+    /* ===== Scroll 出現 ===== */
+    .card.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    /* ===== Hover ===== */
+    .card:hover {
+        background: #fff8f2; /* 淡淡的奶茶底色 */
+        border-left: 6px solid #eab78d; /* 加深邊框 */
+        box-shadow: var(--shadow-hover);
+    }
+
+    /* ===== 左右區塊 ===== */
+    .text {
+        flex: 1.2;
+        transform: translateZ(30px); /* 3D 浮動層次 */
+    }
+
+    .image {
+        flex: 0.8;
+        display: flex;
+        justify-content: center;
+        transform: translateZ(50px); /* 讓圖片更立體 */
+    }
+
+    /* ===== 圖片 ===== */
+    .image img {
+        width: 100%;
+        max-width: 280px;
+        border-radius: 16px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        animation: float 4s ease-in-out infinite;
+        transition: transform 0.6s ease;
+        object-fit: cover;
+    }
+
+    .image img:hover {
+        transform: scale(1.05) rotate(1deg);
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+
+    /* ===== 文字 ===== */
+    .school {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--text-main);
+    }
+
+    .meta {
+        color: var(--text-muted);
+        font-size: 15px;
+        margin-top: 4px;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px dashed #e0e0e0;
+    }
+
+    .subtitle {
+        margin-top: 16px;
+        font-weight: bold;
+        color: var(--text-main);
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    /* 給小標題加個可愛的裝飾點 */
+    .subtitle::before {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: var(--primary-dark);
+    }
+
+    ul {
+        padding-left: 24px;
+        margin: 8px 0 16px 0;
+        color: var(--text-muted);
+    }
+
+    li {
+        margin: 6px 0;
+        font-size: 15px;
+    }
+
+    .gpa {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 6px 14px;
+        background: #fff0e6;
+        border-radius: 8px;
+        font-weight: bold;
+        color: var(--accent-orange);
+        font-size: 15px;
+        border: 1px solid #fde4d5;
+    }
+
+    /* ===== 文字動畫 ===== */
+    .text > * {
+        opacity: 0;
+        transform: translateY(15px);
+        transition: all 0.6s ease;
+    }
+
+    .card.show .text > *:nth-child(1) { transition-delay: 0.1s; }
+    .card.show .text > *:nth-child(2) { transition-delay: 0.2s; }
+    .card.show .text > *:nth-child(3) { transition-delay: 0.3s; }
+    .card.show .text > *:nth-child(4) { transition-delay: 0.4s; }
+    .card.show .text > *:nth-child(5) { transition-delay: 0.5s; }
+    .card.show .text > *:nth-child(6) { transition-delay: 0.6s; }
+
+    .card.show .text > * {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* ===== RWD ===== */
+    @media (max-width: 768px) {
+        .card {
+            flex-direction: column;
+            padding: 30px 20px;
+            gap: 25px;
+        }
+        .image img {
+            max-width: 100%;
+        }
+    }
 </style>
 </head>
 
 <body>
 
 <nav>
-<a href="index.html">Home</a>
-<a href="education.html">Education</a>
-<a href="courses.html">Courses</a>
-<a href="projects.html">Projects</a>
-<a href="research.html">Research</a>
-<a href="internship.html">Internship</a>
-<a href="others.html">Others</a>
+    <a href="index.html">Home</a>
+    <a href="education.html" class="active">Education</a>
+    <a href="courses.html">Courses</a>
+    <a href="projects.html">Projects</a>
+    <a href="research.html">Research</a>
+    <a href="internship.html">Internship</a>
+    <a href="others.html">Others</a>
 </nav>
 
 <div class="section">
 
-<div class="title">🎓 Education</div>
+    <div class="title">🎓 Education</div>
 
-<!-- 碩士 -->
-<div class="card">
-<div class="text">
+    <div class="card">
+        <div class="text">
+            <div class="school">國立陽明交通大學 資訊管理研究所</div>
+            <div class="meta">2024.09 - Present ｜ 商務多媒體實驗室（指導教授：蔡銘箴）</div>
 
-<div class="school">國立陽明交通大學 資訊管理研究所</div>
-<div class="meta">2024/09 - Now ｜ 商務多媒體實驗室（指導教授：蔡銘箴）</div>
+            <div class="subtitle">學術成就</div>
+            <ul>
+                <li>113、114學年度 張俊彥校長紀念獎學金</li>
+            </ul>
 
-<div class="subtitle">學術成就</div>
-<ul>
-<li>113、114學年度 張俊彥校長紀念獎學金</li>
-</ul>
+            <div class="subtitle">研究領域</div>
+            <ul>
+                <li>醫療影像對抗性分析（AI 安全 × 醫療應用）</li>
+            </ul>
 
-<div class="subtitle">研究領域</div>
-<ul>
-<li>醫療影像對抗性分析（AI 安全 × 醫療應用）</li>
-</ul>
+            <div class="subtitle">參與計畫</div>
+            <ul>
+                <li>國科會 AI 正念飲食 App 計畫</li>
+            </ul>
 
-<div class="subtitle">參與計畫</div>
-<ul>
-<li>國科會 AI 正念飲食 App 計畫</li>
-</ul>
+            <div class="gpa">GPA: 4.28 / 4.3</div>
+        </div>
 
-<div class="gpa">GPA: 4.28 / 4.3</div>
+        <div class="image">
+            <img src="images/lab.JPG" alt="NYCU Lab">
+        </div>
+    </div>
 
-</div>
+    <div class="card">
+        <div class="text">
+            <div class="school">國立彰化師範大學 資訊管理學系</div>
+            <div class="meta">2020.09 - 2024.01</div>
 
-<div class="image">
-<img src="images/lab.JPG">
-</div>
-</div>
+            <div class="subtitle">學術成就</div>
+            <ul>
+                <li>112學年度-管理學院優秀學生獎（第一名）</li>
+                <li>110學年度-連德李連來校外獎學金</li>
+            </ul>
 
-<!-- 學士 -->
-<div class="card">
-<div class="text">
+            <div class="subtitle">專題</div>
+            <ul>
+                <li>生成式 AI 在地遊程系統（組長）</li>
+                <li>Acer 企業獎</li>
+                <li>國泰卓越獎助計畫</li>
+            </ul>
 
-<div class="school">國立彰化師範大學 資訊管理學系</div>
-<div class="meta">2020/09 - 2024/01</div>
+            <div class="gpa">GPA: 3.9 / 4.0</div>
+        </div>
 
-<div class="subtitle">學術成就</div>
-<ul>
-<li>112學年度-管理學院優秀學生獎（第一名）</li>
-<li>110學年度-連德李連來校外獎學金</li>
-</ul>
-
-<div class="subtitle">專題</div>
-<ul>
-<li>生成式 AI 在地遊程系統（組長）</li>
-<li>Acer 企業獎</li>
-<li>國泰卓越獎助計畫</li>
-</ul>
-
-<div class="gpa">GPA: 3.9 / 4.0</div>
-
-</div>
-
-<div class="image">
-<img src="images/school.JPG">
-</div>
-</div>
+        <div class="image">
+            <img src="images/school.JPG" alt="NCUE Campus">
+        </div>
+    </div>
 
 </div>
 
@@ -258,33 +309,37 @@ const cards = document.querySelectorAll('.card');
 
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-        if(entry.isIntersecting){
+        if (entry.isIntersecting) {
             entry.target.classList.add('show');
         }
     });
-},{ threshold:0.2 });
+}, { threshold: 0.15 });
 
 cards.forEach(card => observer.observe(card));
 
 // ===== Apple 3D 傾斜 =====
 document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+        // 只有在桌機版才執行 3D 效果，避免手機滑動干擾
+        if (window.innerWidth > 768) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
 
-        const moveX = (x - centerX) / 25;
-        const moveY = (y - centerY) / 25;
+            // 稍微降低傾斜幅度，看起來更優雅
+            const moveX = (x - centerX) / 40; 
+            const moveY = (y - centerY) / 40;
 
-        card.style.transform = `
-            translateY(-10px)
-            rotateX(${ -moveY }deg)
-            rotateY(${ moveX }deg)
-            scale(1.02)
-        `;
+            card.style.transform = `
+                translateY(-10px)
+                rotateX(${-moveY}deg)
+                rotateY(${moveX}deg)
+                scale(1.02)
+            `;
+        }
     });
 
     card.addEventListener('mouseleave', () => {
