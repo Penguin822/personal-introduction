@@ -164,7 +164,7 @@
         margin-top: 24px;
         opacity: 0;
         transform: translateY(15px);
-        animation: fadeInUp 0.8s ease forwards 0.6s; /* 延遲進場，製造層次感 */
+        animation: fadeInUp 0.8s ease forwards 0.6s;
     }
 
     .social-btn {
@@ -198,6 +198,49 @@
         border-color: transparent;
     }
 
+    /* ===== QR Code 區塊 ===== */
+    .qr-container {
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        border-radius: 16px;
+        padding: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 50;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease forwards 0.8s;
+        transition: transform 0.3s ease;
+    }
+
+    .qr-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .qr-container img {
+        /* 這裡使用 API 即時產生你的 GitHub Page QR Code */
+        width: 100px;
+        height: 100px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        border: 1px solid #f0f0f0;
+    }
+
+    .qr-text {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-muted);
+        letter-spacing: 0.5px;
+    }
+
     /* ===== 氣泡按鈕 ===== */
     .bubble {
         position: absolute;
@@ -218,12 +261,13 @@
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
+    /* 微調氣泡位置，避免被 QR Code 擋到右下角 */
     .b1 { background: rgba(255, 224, 196, 0.85); top: 18%; left: 15%; animation: floatIn 1s forwards 0.7s, floatMove 5s infinite ease-in-out 0.7s; }
     .b2 { background: rgba(255, 214, 224, 0.85); top: 25%; right: 15%; animation: floatIn 1s forwards 0.8s, floatMove 6s infinite ease-in-out 0.8s; }
     .b3 { background: rgba(224, 247, 250, 0.85); bottom: 25%; left: 12%; animation: floatIn 1s forwards 0.9s, floatMove 4.5s infinite ease-in-out 0.9s; }
-    .b4 { background: rgba(232, 245, 233, 0.85); bottom: 22%; right: 18%; animation: floatIn 1s forwards 1.0s, floatMove 5.5s infinite ease-in-out 1.0s; }
+    .b4 { background: rgba(232, 245, 233, 0.85); top: 50%; right: 12%; animation: floatIn 1s forwards 1.0s, floatMove 5.5s infinite ease-in-out 1.0s; }
     .b5 { background: rgba(255, 243, 224, 0.85); top: 50%; left: 8%; animation: floatIn 1s forwards 1.1s, floatMove 5s infinite ease-in-out 1.1s; }
-    .b6 { background: rgba(243, 229, 245, 0.85); top: 55%; right: 8%; animation: floatIn 1s forwards 1.2s, floatMove 6.5s infinite ease-in-out 1.2s; }
+    .b6 { background: rgba(243, 229, 245, 0.85); bottom: 18%; right: 35%; animation: floatIn 1s forwards 1.2s, floatMove 6.5s infinite ease-in-out 1.2s; }
 
     .bubble:hover {
         transform: scale(1.1) translateY(-5px) !important;
@@ -261,12 +305,14 @@
         .b1 { top: 15%; left: 5%; }
         .b2 { top: 20%; right: 5%; }
         .b3 { bottom: 20%; left: 5%; }
-        .b4 { bottom: 15%; right: 5%; }
+        .b4 { top: 45%; right: 5%; }
         .b5 { top: 40%; left: 2%; }
-        .b6 { top: 45%; right: 2%; }
+        .b6 { bottom: 15%; right: 35%; }
         .name { font-size: 30px; }
         .profile-pic { width: 140px; height: 140px; }
         .social-btn { width: 40px; height: 40px; }
+        /* 手機版隱藏 QR Code，因為面試官可以直接滑手機 */
+        .qr-container { display: none; }
     }
 </style>
 
@@ -312,6 +358,11 @@
                 </svg>
             </a>
         </div>
+    </div>
+
+    <div class="qr-container">
+        <img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://penguin822.github.io/personal-introduction/index.html&choe=UTF-8" alt="Portfolio QR Code">
+        <span class="qr-text">Scan for Portfolio</span>
     </div>
 
     <div class="bubble b1" onclick="location.href='education.html'">🎓 Education</div>
