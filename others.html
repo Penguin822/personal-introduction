@@ -8,7 +8,7 @@
     :root {
         --primary: #FFE0C4;
         --primary-dark: #f5cba7;
-        --secondary: #FFD6E0; /* 柔和粉 */
+        --secondary: #FFD6E0; 
         --accent-blue: #E0F7FA;
         --accent-green: #E8F5E9;
         --bg-light: #fafafa;
@@ -83,6 +83,7 @@
         font-size: 16px;
         color: var(--text-muted);
         margin: 0;
+        font-weight: 500;
     }
 
     /* ===== Common Card Style ===== */
@@ -131,6 +132,57 @@
         font-size: 13px;
         color: var(--text-main);
         font-weight: 500;
+    }
+
+    /* ===== Bullet Points (Presentation Style) ===== */
+    .point-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 20px 0;
+    }
+
+    .point-list li {
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 12px;
+        font-size: 16px;
+        color: var(--text-muted);
+    }
+
+    .point-list li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        top: -2px;
+        font-size: 20px;
+        color: var(--primary-dark);
+        font-weight: bold;
+    }
+
+    .point-list strong {
+        color: var(--text-main);
+    }
+
+    /* ===== Highlight Value Box ===== */
+    .value-box {
+        background: #fffdfc;
+        border-left: 4px solid #ef4444; /* 用紅色凸顯資安 */
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .value-box h4 {
+        margin: 0 0 6px 0;
+        color: #d84b4b;
+        font-size: 16px;
+    }
+
+    .value-box p {
+        margin: 0;
+        font-size: 15px;
+        color: var(--text-muted);
     }
 
     /* ===== Image Layouts ===== */
@@ -226,7 +278,7 @@
     
     <div class="hero">
         <h1>技術探索 & 課外活動</h1>
-        <p>擁抱 AI 開發工具，建立自己的 Side Projects</p>
+        <p>擁抱 AI 協作工具・建構安全且實用的 Side Projects</p>
     </div>
 
     <div class="card" style="animation-delay: 0.1s;">
@@ -235,20 +287,19 @@
             <span class="tag">Node.js</span>
             <span class="tag">OpenClaw</span>
             <span class="tag">OpenAI GPT API</span>
-            <span class="tag">LINE Official Account</span>
+            <span class="tag">LINE API</span>
             <span class="tag">ngrok</span>
-            <span class="tag">Git</span>
         </div>
         
-        <p>
-            這是我自己動手做的一個 Side Project，利用 OpenClaw 框架和 GPT 模型，開發了一個可以理解自然語言並執行任務的 LINE 機器人（我叫它小龍蝦）。為了讓本機端的 Node.js 服務能跟 LINE API 溝通，我使用了 <strong>ngrok</strong> 來建立網路隧道，並全程使用 <strong>Git</strong> 進行版本控管。
-        </p>
+        <ul class="point-list">
+            <li><strong>專案目標：</strong> 基於 OpenClaw 框架與 GPT 模型，開發具備自然語言理解與任務執行能力的 LINE 機器人。</li>
+            <li><strong>環境配置：</strong> 運用 ngrok 建立網路隧道 (Tunneling)，介接本機端 Node.js 服務與 LINE API。</li>
+        </ul>
 
-        <h4 style="margin-bottom: 8px; color: var(--text-main);">🔒 關鍵亮點：VM 沙盒資安隔離</h4>
-        <p style="margin-top: 0;">
-            因為 AI Agent 有能力自己生成並執行程式碼，如果直接架在實體主機上，會有很高的被駭風險（例如：惡意 Prompt Injection 導致主機資料被刪除）。<br>
-            所以我特別**在虛擬機 (VM) 中建置它的執行環境**。這樣做形同建立了一個沙盒 (Sandbox)，就算 Agent 執行了危險指令，也只會被限制在 VM 裡面，完全不會影響到我的外部主機，確保了系統的安全性。
-        </p>
+        <div class="value-box">
+            <h4>🔒 核心亮點：VM 沙盒資安隔離 (Sandbox)</h4>
+            <p>考量 AI Agent 具備執行程式碼之能力，為防範 <strong>Prompt Injection</strong> 等惡意攻擊，特將系統架設於虛擬機 (VM) 中。即使執行危險指令，亦不會波及外部主機，確保系統環境安全。</p>
+        </div>
 
         <div class="flow-container">
             <div class="flow-item">📱 LINE API</div>
@@ -257,9 +308,9 @@
             <div class="flow-arrow">➔</div>
             <div class="flow-item">⚙️ Node.js 後端</div>
             <div class="flow-arrow">➔</div>
-            <div class="flow-item">🧠 GPT / OpenClaw</div>
+            <div class="flow-item">🧠 OpenClaw / GPT</div>
             <div class="flow-arrow">➔</div>
-            <div class="flow-item" style="border-color: #ff9999;">🛡️ VM 隔離執行環境</div>
+            <div class="flow-item" style="border-color: #ff9999; color: #d84b4b; font-weight: bold;">🛡️ VM 隔離環境</div>
         </div>
 
         <div class="img-wrapper">
@@ -267,18 +318,17 @@
                 <img src="images/line-bot-1.png" alt="與小龍蝦對話畫面 1">
                 <img src="images/line-bot-2.png" alt="與小龍蝦對話畫面 2">
             </div>
-            <div class="img-caption">▲ 透過 LINE 與 AI Agent「小龍蝦」進行互動實測</div>
+            <div class="img-caption">▲ 透過 LINE 與 AI Agent 互動實測</div>
         </div>
     </div>
 
     <div class="card" style="animation-delay: 0.2s;">
         <h2 class="section-title">👩‍💻 Microsoft Coding Angels 計畫</h2>
-        <p>
-            參加微軟舉辦的 Coding Angels 計畫，與許多熱愛科技的女同學一起交流學習。在這裡我最大的收穫是接觸到了 <strong>GitHub Copilot</strong>。
-        </p>
-        <p>
-            我學會了如何把 AI 當作結對編程 (Pair Programming) 的夥伴，透過良好的註解習慣引導 Copilot 生成程式碼，這大幅改變了我寫 Code 的節奏，讓我能把更多時間花在思考架構，而不是糾結於語法細節。
-        </p>
+        
+        <ul class="point-list" style="margin-bottom: 0;">
+            <li><strong>技術探索：</strong> 深入體驗 <strong>GitHub Copilot</strong> 的 Pair Programming (結對編程) 協作模式。</li>
+            <li><strong>開發思維轉換：</strong> 養成「先撰寫清晰註解/規格，再產出程式碼」的習慣。將開發心力從「糾結語法細節」轉移至「思考系統整體架構」。</li>
+        </ul>
         
         <div class="img-wrapper">
             <img src="images/coding-angels.png" alt="Microsoft Coding Angels 活動照片" style="max-width: 600px;">
@@ -287,21 +337,11 @@
     </div>
 
     <div class="card" style="animation-delay: 0.3s;">
-        <h2 class="section-title">✨ 日常開發的 AI 協作 (Claude)</h2>
-        <p>
-            除了實作 AI 應用，我平常也是重度的 AI 工具使用者。在日常開發中，我會將 <strong>Claude</strong> 作為我的技術顧問：
+        <h2 class="section-title">✨ 日常開發的 AI 協作工作流 (Claude)</h2>
+        
+        <p style="color: var(--text-muted); margin-top: 0; margin-bottom: 16px;">
+            實踐 <strong>AI-Native Developer</strong> 工作模式，將 AI 視為技術顧問：
         </p>
-        <ul>
-            <li><strong>架構發想：</strong>在開新專案前，我會跟 Claude 討論資料庫 Schema 怎麼設計比較合理。</li>
-            <li><strong>程式碼重構：</strong>遇到寫得太肥大的 Function，我會請它提供 Clean Code 的修改建議。</li>
-            <li><strong>快速除錯：</strong>把難解的報錯 Log 丟給它，可以幫我省下大量爬 StackOverflow 的時間。</li>
-        </ul>
-        <p style="margin-bottom: 0;">
-            這些經驗讓我培養了很好的 <strong>Prompt Engineering (提示詞工程)</strong> 能力，知道怎麼精準描述問題，讓 AI 成為我開發上最強的輔助。
-        </p>
-    </div>
 
-</div>
-
-</body>
-</html>
+        <ul class="point-list">
+            <li><strong>架構發想：</strong> 開新專案初期，討論
