@@ -2,157 +2,279 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<title>Courses</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Courses | Portfolio</title>
 <style>
-:root{
-    --primary:#FFE0C4;
-    --primary-dark:#f5cba7;
-    --text:#2b2b2b;
-}
+    :root {
+        --primary: #FFE0C4;
+        --primary-dark: #f5cba7;
+        --secondary: #FFD6E0;
+        --bg-light: #fafafa;
+        --text-main: #2b2b2b;
+        --text-muted: #666666;
+        --border: #f0f0f0;
+        --accent-orange: #d36e30;
+        --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
 
-body{
-    margin:0;
-    font-family:"Segoe UI", sans-serif;
-    background:#fff;
-    color:var(--text);
-}
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-light);
+        color: var(--text-main);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+    }
 
-/* ===== Navbar ===== */
-nav{
-    position:sticky;
-    top:0;
-    background:var(--primary);
-    display:flex;
-    justify-content:center;
-    gap:18px;
-    padding:14px;
-}
-nav a{
-    text-decoration:none;
-    color:#333;
-    padding:8px 12px;
-    border-radius:8px;
-    transition:.3s;
-}
-nav a:hover{
-    background:var(--primary-dark);
-    transform:translateY(-2px);
-}
+    /* ===== 毛玻璃導覽列 ===== */
+    nav {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 224, 196, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        padding: 14px;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
 
-/* ===== Section ===== */
-.section{
-    padding:60px 20px;
-    max-width:1100px;
-    margin:auto;
-}
+    nav a {
+        text-decoration: none;
+        color: #4a4a4a;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
 
-/* ===== Title ===== */
-.title{
-    font-size:28px;
-    margin-bottom:30px;
-}
+    nav a:hover, nav a.active {
+        background: rgba(255, 255, 255, 0.6);
+        color: var(--text-main);
+        transform: translateY(-2px);
+    }
 
-/* ===== Category ===== */
-.category{
-    margin-bottom:40px;
-}
+    /* ===== Layout ===== */
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 24px 80px 24px;
+    }
 
-.category-title{
-    font-size:20px;
-    font-weight:bold;
-    margin-bottom:15px;
-    border-left:5px solid var(--primary);
-    padding-left:10px;
-}
+    /* ===== Hero Section ===== */
+    .hero {
+        text-align: center;
+        margin-bottom: 40px;
+        background: linear-gradient(120deg, #fff, var(--primary));
+        padding: 40px 20px;
+        border-radius: 24px;
+        box-shadow: var(--shadow-soft);
+        animation: fadeIn 0.8s ease;
+    }
 
-/* ===== Grid ===== */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-    gap:15px;
-}
+    .hero h1 {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 0 0 10px 0;
+        color: var(--text-main);
+    }
 
-/* ===== Card ===== */
-.card{
-    background:#fff;
-    padding:15px;
-    border-radius:12px;
-    transition:.3s;
-    border:1px solid #f2f2f2;
-}
+    .hero p {
+        font-size: 16px;
+        color: var(--text-muted);
+        margin: 0;
+        font-weight: 500;
+    }
 
-.card:hover{
-    transform:translateY(-6px);
-    background:#fff8f2;
-}
+    /* ===== 類別卡片 ===== */
+    .category-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 25px;
+        box-shadow: var(--shadow-soft);
+        border-left: 6px solid var(--primary-dark);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeIn 0.8s ease backwards;
+    }
 
-/* ===== Grade ===== */
-.grade{
-    color:#d35400;
-    font-weight:bold;
-    margin-left:5px;
-}
+    .category-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        background: #fffdfa;
+    }
 
+    .category-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: var(--text-main);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* ===== 課程 Grid ===== */
+    .course-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+    }
+
+    /* ===== 單一課程方塊 ===== */
+    .course-item {
+        background: var(--bg-light);
+        border: 1px solid #eaeaea;
+        padding: 16px 20px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.3s;
+    }
+
+    .course-item:hover {
+        border-color: var(--primary-dark);
+        background: #fff;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        transform: translateY(-2px);
+    }
+
+    .course-name {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text-main);
+    }
+
+    /* ===== 成績 Badge ===== */
+    .grade-badge {
+        background: #fff0e6;
+        color: var(--accent-orange);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: bold;
+        border: 1px solid #fde4d5;
+        letter-spacing: 0.5px;
+    }
+
+    /* 針對 A 和 A+ 可以有細微差異（可選） */
+    .grade-badge.a-plus {
+        background: #ffebe0;
+        color: #d35400;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+        .course-grid { grid-template-columns: 1fr; }
+        .category-card { padding: 24px 20px; }
+    }
 </style>
 </head>
-
 <body>
 
 <nav>
-<a href="index.html">Home</a>
-<a href="education.html">Education</a>
-<a href="courses.html">Courses</a>
-<a href="projects.html">Projects</a>
-<a href="research.html">Research</a>
-<a href="internship.html">Internship</a>
-<a href="others.html">Others</a>
+    <a href="index.html">Home</a>
+    <a href="education.html">Education</a>
+    <a href="courses.html" class="active">Courses</a>
+    <a href="projects.html">Projects</a>
+    <a href="research.html">Research</a>
+    <a href="internship.html">Internship</a>
+    <a href="others.html">Others</a>
 </nav>
 
-<div class="section">
+<div class="container">
 
-<div class="title">📚 Related Courses</div>
+    <div class="hero">
+        <h1>📚 修課紀錄與學術表現</h1>
+        <p>紮實的資管與資工核心基礎，保持優異的 GPA 成績</p>
+    </div>
 
-<!-- 1 系統架構 -->
-<div class="category">
-<div class="category-title">💻 系統架構與核心基礎</div>
-<div class="grid">
-<div class="card">系統分析與設計 <span class="grade">A+</span></div>
-<div class="card">計算機概論 <span class="grade">A+</span></div>
-<div class="card">Unix 系統與應用 <span class="grade">A+</span></div>
-<div class="card">資料結構 <span class="grade">A</span></div>
-</div>
-</div>
+    <div class="category-card" style="animation-delay: 0.1s;">
+        <h2 class="category-title">💻 系統架構與核心基礎</h2>
+        <div class="course-grid">
+            <div class="course-item">
+                <span class="course-name">系統分析與設計</span>
+                <span class="grade-badge a-plus">A+</span>
+            </div>
+            <div class="course-item">
+                <span class="course-name">計算機概論</span>
+                <span class="grade-badge a-plus">A+</span>
+            </div>
+            <div class="course-item">
+                <span class="course-name">Unix 系統與應用</span>
+                <span class="grade-badge a-plus">A+</span>
+            </div>
+            <div class="course-item">
+                <span class="course-name">資料結構</span>
+                <span class="grade-badge">A</span>
+            </div>
+        </div>
+    </div>
 
-<!-- 2 網路與資安 -->
-<div class="category">
-<div class="category-title">🔐 基礎設施、網路與資安</div>
-<div class="grid">
-<div class="card">網路協定分析實務 <span class="grade">A+</span></div>
-<div class="card">雲端計算理論與實務 <span class="grade">A+</span></div>
-<div class="card">資訊安全 <span class="grade">A+</span></div>
-</div>
-</div>
+    <div class="category-card" style="animation-delay: 0.2s;">
+        <h2 class="category-title">🔐 基礎設施、網路與資安</h2>
+        <div class="course-grid">
+            <div class="course-item">
+                <span class="course-name">網路協定分析實務</span>
+                <span class="grade-badge a-plus">A+</span>
+            </div>
+            <div class="course-item">
+                <span class="course-name">雲端計算理論與實務</span>
+                <span class="grade-badge a-plus">A+</span>
+            </div>
+            <div class="course-item">
+                <span class="course-name">資訊安全</span>
+                <span class="grade-badge a-plus">A+</span>
+            </div>
+        </div>
+    </div>
 
-<!-- 3 商業管理 -->
-<div class="category">
-<div class="category-title">📊 商業邏輯與管理</div>
-<div class="grid">
-<div class="card">管理資訊系統 <span class="grade">A+</span></div>
-<div class="card">資料庫 <span class="grade">A</span></div>
-</div>
-</div>
+    <div class="category-card" style="animation-delay: 0.3s;">
+        <h2 class="category-title">📊 商業邏輯與管理</h2>
+        <div class="course-grid">
+            <div class="course-item">
+                <span class="course-name">管理資訊系統</span>
+                <span class="grade-badge a-plus">A+</span>
+            </div>
+            <div class="course-item">
+                <span class="course-name">資料庫</span>
+                <span class="grade-badge">A</span>
+            </div>
+        </div>
+    </div>
 
-<!-- 4 AI & Data -->
-<div class="category">
-<div class="category-title">🤖 大數據與人工智慧</div>
-<div class="grid">
-<div class="card">資料探勘研究與實務 <span class="grade">A+</span></div>
-<div class="card">巨量資料科學導論 <span class="grade">A+</span></div>
-<div class="card">演算式決策與學習 <span class="grade">A+</span></div>
-<div class="card">數位內容與機器學習 <span class="grade">A+</span></div>
-</div>
-</div>
+    <div class="category-card" style="animation-delay: 0.4s;">
+        <h2 class="category-title">🤖 大數據與人工智慧</h2>
+        <div class="course-grid">
+            <div class="course-item">
+                <span class="course-name">資料探勘研究與實務</span>
+                <span class="grade-badge a-plus">A+</span>
+            </div>
+            <div class="course-item">
+                <span class="course-name">巨量資料科學導論</span>
+                <span class="grade-badge a-plus">A+</span>
+            </div>
+            <div class="course-item">
+                <span class="course-name">演算式決策與學習</span>
+                <span class="grade-badge a-plus">A+</span>
+            </div>
+            <div class="course-item">
+                <span class="course-name">數位內容與機器學習</span>
+                <span class="grade-badge a-plus">A+</span>
+            </div>
+        </div>
+    </div>
 
 </div>
 
